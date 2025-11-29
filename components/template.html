@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Template Page</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="creamy_gray_theme_minimal.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- MDB CSS for ripple effect -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.css" rel="stylesheet" />
+  
+  <style>
+    /* Header section styles */
+    .header-section {
+      background: #053361 !important;
+      color: #053361!important;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
+      border-bottom: 1px solid rgba(255,255,255,0.2) !important;
+      min-height: auto !important;
+      padding-top: 5px !important;
+      padding-bottom: 0px !important;
+      margin-bottom: -10px !important;
+      max-height: 90px !important;
+      overflow: hidden !important;
+    }
+    
+    /* Input styles */
+    .form-control-custom {
+      padding: 6px 12px !important;
+      margin-bottom: 0 !important;
+      height: 36px !important;
+      font-size: 0.9rem !important;
+      border: 1px solid #ced4da !important;
+      border-radius: 4px !important;
+      width: 148px !important;
+      transition: all 0.2s ease !important;
+    }
+    
+    .form-control-custom:focus {
+      border-color: #86b7fe !important;
+      box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25) !important;
+    }
+    
+    /* Button styles */
+    .btn-primary {
+      background-color: #1266f1 !important;
+      color: white !important;
+      border-radius: 4px !important;
+      padding: 8px 14px !important;
+      font-size: 0.9rem !important;
+      border: none !important;
+      margin-right: 5px !important;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2) !important;
+      transition: all 0.2s ease !important;
+      height: 34px !important;
+      min-width: 80px !important;
+    }
+    
+    .btn-secondary {
+      background-color: #ffd000 !important;
+      color: #053361 !important;
+      border-radius: 4px !important;
+      padding: 8px 14px !important;
+      font-size: 0.9rem !important;
+      border: none !important;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2) !important;
+      transition: all 0.2s ease !important;
+      height: 34px !important;
+      min-width: 80px !important;
+    }
+
+    /* Login form layout */
+    .input-container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    
+    .login-row {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .button-container {
+      display: flex;
+      gap: 8px;
+    }
+
+    /* Who Am I dropdown */
+    .whoami-dropdown {
+      position: relative !important;
+      z-index: 3000 !important;
+      margin: 0 !important;
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+    }
+    
+    .user-type-btn {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      padding: 8px 12px !important;
+      height: 30px !important;
+      background: rgba(255, 255, 255, 0.9) !important;
+      border: 1px solid rgba(255, 255, 255, 0.3) !important;
+      border-radius: 4px !important;
+      color: #053361 !important;
+      font-weight: 600 !important;
+      margin-top: 4px;
+    }
+
+    /* Forgot password link */
+    .forgot-link-container {
+      width: 100%;
+      text-align: right;
+      margin-top: 6px;
+    }
+    
+    .forgot-password {
+      font-size: 0.8rem !important;
+      color: #1976d2 !important;
+      text-decoration: underline !important;
+    }
+
+    /* User profile dropdown */
+    .user-profile-dropdown {
+      position: absolute !important;
+      top: 18px !important;
+      right: 10px !important;
+      z-index: 120000 !important;
+    }
+
+    /* Footer stick to bottom */
+    .page-wrapper {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    .main-content {
+      flex: 1 0 auto;
+      min-height: 60vh; /* Ensure content area takes space */
+    }
+    .footer {
+      flex-shrink: 0;
+      margin-top: auto;
+    }
+    
+    /* Footer Styles */
+    .footer {
+      background: linear-gradient(to right, #f8f9fa, #e9ecef);
+      color: #333;
+      padding: 20px 0 10px;
+      border-top: 1px solid #dee2e6;
+      font-family: 'Montserrat', sans-serif;
+      width: 100%;
+      margin-top: 8px;
+      position: relative;
+    }
+    
+    .footer-container {
+      padding: 10px 0 !important;
+      margin: 0 auto;
+    }
+    
+    .footer-section {
+      margin-bottom: 10px;
+    }
+    
+    .footer-heading {
+      position: relative;
+      color: #053361;
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 5px;
+      padding-bottom: 4px;
+    }
+    
+    .footer-heading:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 40px;
+      height: 2px;
+      background: #FFD000;
+      border-radius: 2px;
+    }
+    
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .footer-links li {
+      margin-bottom: 5px;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      color: #495057;
+    }
+    
+    .footer-links li:hover {
+      transform: translateX(5px);
+    }
+    
+    .footer-links li a {
+      color: #495057;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .footer-links li a:hover {
+      color: #053361;
+      text-decoration: none;
+    }
+    
+    .join-btn {
+      display: inline-block;
+      padding: 6px 15px;
+      background: #FFD000;
+      color: #053361;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      margin-top: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .join-btn:hover {
+      background: linear-gradient(135deg, #0a4a94, #053361);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+      color: white;
+    }
+    
+    .social-icons {
+      display: flex;
+      gap: 15px;
+      margin-top: 1rem !important;
+    }
+    
+    .social-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #f8f9fa;
+      color: #053361;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .social-icon:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+      background: #053361;
+      color: #fff;
+    }
+    
+    .footer-bottom {
+      padding-top: 10px;
+      margin-top: 10px;
+      border-top: 1px solid #dee2e6;
+      color: #6c757d;
+      font-size: 13px;
+    }
+    
+    .footer-logo {
+      color: #053361;
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 5px;
+      letter-spacing: 1px;
+    }
+    
+    .footer-tagline {
+      color: #6c757d;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+
+    /* Forgot Password Modal Styles */
+    #forgot-password-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    
+    .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 300px;
+      text-align: center;
+    }
+    
+    .modal-content input {
+      width: 100%;
+      padding: 8px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    
+    .modal-content button {
+      padding: 8px 16px;
+      background: #053361;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 5px;
+    }
+    
+    .modal-content button:hover {
+      background: #004f6e;
+    }
+    
+    .highlight-login {
+      box-shadow: 0 0 0 4px #1976d2, 0 2px 16px #1976d2a0;
+      transition: box-shadow 0.3s;
+    }
+    
+    .dropdown-menu.whoami-menu {
+      background: #fff !important;
+      border: none !important;
+      box-shadow: none !important;
+    }
+  </style>
+  <!-- Tailwind CDN for utility classes -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body style="background: url('https://via.placeholder.com/1920x1080.png?text=Test+Background') no-repeat center center fixed; background-size: cover; position: relative;">
+  <div class="page-wrapper">
+    <div class="main-content">
+      <div id="forgot-password-modal">
+        <div class="modal-content">
+          <h3>Forgot Password</h3>
+          <p>Enter your registered email to reset your password.</p>
+          <input type="email" id="reset-email" placeholder="Enter your email" required />
+          <button onclick="sendResetLink()">Send Reset Link</button>
+          <button onclick="closeModal()">Close</button>
+        </div>
+      </div>
+
+      <!-- Overlay container -->
+      <div id="overlay" style="display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 20000;">
+        <iframe src="Registration/membershipoption.html" style="width: 100%; height: 100%; border: none;"></iframe>
+      </div>
+
+      <section id="top-header" class="header-section">
+        <div class="container-fluid" style="padding-top: 0; padding-bottom: 0;">
+          <div class="row p-0">
+            <div class="col-12 col-sm-4">
+              <div class="d-flex align-items-center justify-content-center justify-content-md-start">
+                <img class="logo" style="height: 80px; width: auto" src="images/logo2.png" alt="ITLS Logo">
+              </div>
+            </div>
+
+            <div class="col-12 col-sm-8 my-0">
+              <div id="login-form" class="modern-form" style="position: absolute; top: 20px; right: -17px;">
+                <div class="input-container">
+                  <div class="login-row">
+                    <input type="text" id="username" class="form-control-custom" placeholder="Username" required />
+                    <input type="password" id="password" class="form-control-custom" placeholder="Password" required />
+                    <div class="dropdown glass-effect whoami-dropdown">
+                      <button class="btn dropdown-toggle user-type-btn glass-effect" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-user-circle me-1"></i> Who Am I?
+                      </button>
+                      <ul class="dropdown-menu dropdown-menu-animated whoami-menu" aria-labelledby="languageDropdown">
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-chalkboard-teacher me-2"></i>Teacher</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-user-friends me-2"></i>Parent</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-user-graduate me-2"></i>Student</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="button-container">
+                    <button type="button" class="btn btn-primary" id="login-btn">
+                      <i class="fas fa-sign-in-alt me-1"></i> Log in
+                    </button>
+                    <button type="button" class="btn btn-secondary" onclick="showOverlay()">
+                      <i class="fas fa-user-plus me-1"></i> Sign in
+                    </button>
+                  </div>
+                  <div class="forgot-link-container">
+                    <a href="#" class="forgot-password" onclick="openModal()">
+                      <i class="fas fa-key me-1"></i>Forgot Password?
+                    </a>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- User profile dropdown for logged-in user (hidden by default) -->
+              <div class="dropdown user-profile-dropdown" style="display:none; position:absolute; top:18px; right:10px; z-index:120000;">
+                <button
+                  class="btn user-menu-btn custom-border pulse-animation"
+                  type="button"
+                  id="userDropdown"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <span id="userInitial" class="user-avatar">A</span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end shadow-lg fade-in-dropdown" aria-labelledby="userDropdown">
+                  <li>
+                    <a class="dropdown-item slide-effect" href="/PROFILE PAGES/parentprofile_final.html">
+                      <i class="fas fa-user me-2 text-primary icon-pulse"></i>
+                      <span>Profile</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item slide-effect" href="/">
+                      <i class="fas fa-tachometer-alt me-2 text-success icon-pulse"></i>
+                      <span>Dashboard</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item slide-effect" href="#" id="signout-link">
+                      <i class="fas fa-sign-out-alt me-2 text-danger icon-pulse"></i>
+                      <span>Sign Out</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <button class="logout-button" id="logout-btn" style="float: right; display:none;">
+                <i class="fas fa-sign-out-alt me-1"></i> Logout
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Empty Content Area - Add your content here -->
+      <div class="container mt-5">
+        <!-- Your content goes here -->
+      </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="container footer-container-wrapper">
+        <div class="row footer-container py-3">
+          <div class="col-md-3 col-sm-6 footer-section">
+            <div class="brand-section">
+              <h2 class="footer-logo">ITLS</h2>
+              <p class="footer-tagline mb-2">Interactive Teaching & Learning System</p>
+              <button class="join-btn" id="join-now-btn" onclick="showOverlay()"><i class="fas fa-user-plus me-2"></i>Join now</button>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6 footer-section">
+            <h3 class="footer-heading"><i class="fas fa-book-open me-2"></i>What we offer</h3>
+            <ul class="footer-links">
+              <li><i class="fas fa-calculator me-2"></i>Mathematics</li> 
+              <li><i class="fas fa-language me-2"></i>English</li>
+            </ul>
+          </div>
+          <div class="col-md-3 col-sm-6 footer-section">
+            <h3 class="footer-heading"><i class="fas fa-info-circle me-2"></i>About</h3>
+            <ul class="footer-links" style="margin-top: 0.5rem">
+              <li><a href="contact-us.html"><i class="fas fa-envelope me-2"></i>Contact Us</a></li>
+              <li><a href="terms-of-service.html"><i class="fas fa-gavel me-2"></i>Terms of Service</a></li>
+            </ul>
+          </div>
+          <div class="col-md-3 col-sm-6 footer-section">
+            <h3 class="footer-heading"><i class="fas fa-users me-2"></i>Connect Us</h3>
+            <div class="social-icons">
+              <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 text-center footer-bottom">
+            <p class="mb-0">&copy; <span id="current-year"></span> ITLS. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+  <!-- MDB JavaScript for ripple effect -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.js"></script>
+  <script src="js/core/script.js"></script>
+  <script>
+    // Automatically update copyright year
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+    
+    // Overlay functions
+    function showOverlay() {
+      const overlay = document.getElementById('overlay');
+      overlay.style.display = 'block';
+      overlay.style.pointerEvents = 'auto';
+    }
+    
+    // Function to open the forgot password modal
+    function openModal() {
+      document.getElementById('forgot-password-modal').style.display = 'flex';
+    }
+    
+    // Function to close the forgot password modal
+    function closeModal() {
+      document.getElementById('forgot-password-modal').style.display = 'none';
+    }
+    
+    // Function to send the reset link
+    function sendResetLink() {
+      const email = document.getElementById('reset-email').value;
+      if (!email) {
+          alert("Please enter your registered email.");
+          return;
+      }
+      fetch('/send-reset-link', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email: email }),
+      })
+      .then(response => response.json())
+      .then(data => {
+          if (data.success) {
+              alert("A password reset link has been sent to your email.");
+              closeModal();
+          } else {
+              alert("Failed to send reset link. Please try again.");
+          }
+      })
+      .catch(error => {
+          console.error("Error:", error);
+          alert("An error occurred. Please try again.");
+      });
+    }
+
+    // --- User Profile Dropdown Logic ---
+    function itlsBindLoginFormEvents() {
+      var loginBtn = document.getElementById('login-btn');
+      if (loginBtn && !loginBtn.dataset.bound) {
+        loginBtn.addEventListener('click', function() {
+          var username = document.getElementById('username').value;
+          var password = document.getElementById('password').value;
+          if (username && password) {
+            localStorage.setItem('loggedInUser', JSON.stringify({ username: username }));
+            updateAuthUI();
+          }
+        });
+        loginBtn.dataset.bound = 'true';
+      }
+      
+      var signOutItem = document.getElementById('signout-link');
+      if (signOutItem && !signOutItem.dataset.bound) {
+        signOutItem.addEventListener('click', function(e) {
+          e.preventDefault();
+          localStorage.removeItem('loggedInUser');
+          updateAuthUI();
+        });
+        signOutItem.dataset.bound = 'true';
+      }
+    }
+    
+    function updateAuthUI() {
+      const loggedInUser = localStorage.getItem('loggedInUser');
+      var loginForm = document.getElementById('login-form');
+      var profileDropdown = document.querySelector('.user-profile-dropdown');
+      var logoutBtn = document.getElementById('logout-btn');
+      
+      if (loggedInUser) {
+        if (loginForm) loginForm.style.display = 'none';
+        if (profileDropdown) profileDropdown.style.display = 'block';
+        if (logoutBtn) logoutBtn.style.display = 'none';
+        
+        // Set user initial
+        const user = JSON.parse(loggedInUser);
+        let initial = '';
+        let source = (user.username && typeof user.username === 'string' && user.username.trim().length > 0)
+          ? user.username.trim()
+          : (user.email && typeof user.email === 'string' && user.email.trim().length > 0 ? user.email.trim() : '');
+        if (source) {
+          let match = source.match(/[A-Za-z]/);
+          if (match) initial = match[0].toUpperCase();
+        }
+        var userInitial = document.getElementById('userInitial');
+        if (userInitial) userInitial.textContent = initial;
+      } else {
+        if (loginForm) loginForm.style.display = 'block';
+        if (profileDropdown) profileDropdown.style.display = 'none';
+        if (logoutBtn) logoutBtn.style.display = 'none';
+      }
+    }
+    
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function() {
+        itlsBindLoginFormEvents();
+        updateAuthUI();
+      });
+    } else {
+      itlsBindLoginFormEvents();
+      updateAuthUI();
+    }
+  </script>
+</body>
+</html>

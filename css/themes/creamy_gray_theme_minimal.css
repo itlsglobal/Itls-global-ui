@@ -1,0 +1,106 @@
+/* Creamy Gray Theme - Minimal Version */
+body {
+  background: url("images/body3.avif") no-repeat center center fixed !important;
+  background-size: cover !important;
+}
+
+/*
+.header-section {
+  background: #6d7b8d;
+  color: white;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  padding: 15px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.modern-form {
+  background: rgba(255,255,255,0.95);
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  padding: 25px;
+  border: 1px solid rgba(200,200,200,0.3);
+  margin: 0 auto;
+  max-width: 500px;
+}
+
+.form-control-custom {
+  background: rgba(255,255,255,0.9);
+  border: 1px solid #d0d0d0;
+  color: #333;
+  border-radius: 6px;
+  padding: 12px 15px;
+}
+
+.btn-with-icon {
+  background: #6d7b8d;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 25px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.btn-with-icon:hover {
+  background: #5a6878;
+  transform: translateY(-2px);
+}
+
+.menu-item {
+  background: rgba(255,255,255,0.95);
+  border: 1px solid rgba(200,200,200,0.3);
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  color: #5a6878;
+  transition: all 0.3s ease;
+  padding: 15px;
+  margin: 5px;
+}
+
+.menu-item:hover {
+  background: rgba(255,255,255,1);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.grade-card {
+  background: rgba(255,255,255,0.97);
+  border: 1px solid rgba(200,200,200,0.2);
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+  margin: 15px;
+  color: #5a6878;
+}
+
+.grade-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+.footer {
+  background: #6d7b8d;
+  color: white;
+  padding: 30px 0 15px;
+  margin-top: 50px;
+  border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+.social-icons a {
+  color: white;
+  background: rgba(255,255,255,0.2);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 5px;
+  transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+  background: rgba(255,255,255,0.3);
+  transform: translateY(-2px);
+}
+*/
