@@ -1,0 +1,89 @@
+{
+  "students": [
+    {
+      "id": 1,
+      "name": "Alice Johnson",
+      "grade": "5",
+      "guardian": "Mary Johnson"
+    },
+    {
+      "id": 2,
+      "name": "Bob Williams",
+      "grade": "4",
+      "guardian": "John Williams"
+    },
+    {
+      "id": 3,
+      "name": "Charlie Brown",
+      "grade": "3",
+      "guardian": "Lucy Brown"
+    },
+    {
+      "id": 4,
+      "name": "Diana Miller",
+      "grade": "6",
+      "guardian": "Robert Miller"
+    },
+    {
+      "id": 5,
+      "name": "Eva Davis",
+      "grade": "2",
+      "guardian": "Sarah Davis"
+    },
+    {
+      "id": 6,
+
+      "name": "Frank Wilson",
+      "grade": "1",
+      "guardian": "Jane Smith"
+    },
+    {
+      "id": 7,
+
+      "name": "Grace Lee",
+      "grade": "4",
+      "guardian": "Jennifer Lee"
+    }, 
+    
+    {      "id": 8,
+"name": "Henry Clark", "grade": "4", "guardian": "Michael Clark"},
+
+    {      "id": 9,
+"name": "Ivy Adams", "grade": "3", "guardian": "Linda Adams"},
+
+    {      "id": 10,
+"name": "Jack White", "grade": "6", "guardian": "William White"},
+
+    {      "id": 11,
+"name": "Kara Scott", "grade": "2", "guardian": "Elizabeth Scott"},
+
+    {      "id": 12,
+"name": "Leo King", "grade": "1", "guardian": "David King"},
+    {      "id": 13,
+"name": "Mia Green", "grade": "5", "guardian": "Barbara Green"},
+    {      "id": 14,
+"name": "Noah Hall", "grade": "4", "guardian": "Richard Hall"},
+    {      "id": 15,
+"name": "Olivia Young", "grade": "3", "guardian": "Susan Young"},
+    {      "id": 16,
+"name": "Paul Allen", "grade": "6", "guardian": "Joseph Allen"},
+    {      "id": 17,
+"name": "Quinn Baker", "grade": "2", "guardian": "Jessica Baker"},
+    {      "id": 18,
+"name": "Ryan Cox", "grade": "1", "guardian": "Thomas Cox"},
+    {      "id": 19,
+"name": "Sara Evans", "grade": "5", "guardian": "Sarah Evans"},
+    {      "id": 20,
+"name": "Tom Hill", "grade": "4", "guardian": "Charles Hill"},
+    {      "id": 21,
+"name": "Uma Patel", "grade": "3", "guardian": "Karen Patel"},
+    {      "id": 22,
+"name": "Victor Reed", "grade": "6", "guardian": "Christopher Reed"},
+    {      "id": 23,
+"name": "Wendy Cook", "grade": "2", "guardian": "Nancy Cook"},
+    {      "id": 24,
+"name": "Xander Bell", "grade": "1", "guardian": "Matthew Bell"},
+    {      "id": 25,
+"name": "Yara Gray", "grade": "5", "guardian": "Lisa Gray"}
+  ]
+}

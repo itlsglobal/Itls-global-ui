@@ -1,0 +1,73 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "text": "What is the sum of 2 + 2 ?",
+      "question_type": 1,
+      "answers": [
+        { "id": 1, "text": "2", "is_correct": false },
+        { "id": 2, "text": "4", "is_correct": true },
+        { "id": 3, "text": "5", "is_correct": false },
+        { "id": 4, "text": "9", "is_correct": false }
+      ]
+    },
+    
+    {
+      "id": 2,
+      "text": "Is 5 greater than 3?",
+      "question_type": 2,
+      "answers": [
+        { "id": 1, "text": "Yes", "is_correct": true },
+        { "id": 2, "text": "No", "is_correct": false }
+      ]
+    },
+    {
+      "id": 3,
+      "text": "Is 10 a prime number?",
+      "question_type": 2,
+      "answers": [
+        { "id": 1, "text": "Yes", "is_correct": false },
+        { "id": 2, "text": "No", "is_correct": true }
+      ]
+    },
+    {
+      "id": 4,
+      "text": "Who wrote 'Hamlet'?",
+      "question_type": 3,
+      "answers": [
+        { "id": 1, "text": "Charles Dickens", "is_correct": false },
+        { "id": 2, "text": "William Shakespeare", "is_correct": true },
+        { "id": 3, "text": "Jane Austen", "is_correct": false },
+        { "id": 4, "text": "Mark Twain", "is_correct": false }
+      ]
+    },
+    {
+      "id": 5,
+      "text": "What is 2 + 2?",
+      "question_type": 4,
+      "answers": [
+        { "id": 1, "text": "4", "is_correct": true }
+      ]
+    },
+    {
+      "id": 6,
+      "text": "Which of the below is correct?",
+      "question_type": 5,
+      "answers": [
+        { "id": 1, "text": "2 + 2 = 5", "is_correct": false },
+        { "id": 2, "text": "2 + 2 = 4", "is_correct": true },
+        { "id": 3, "text": "3 + 1 = 4", "is_correct": true },
+        { "id": 4, "text": "3 + 1 = 5", "is_correct": false }
+      ]
+    },
+    {
+      "id": 7,
+      "text": "Is JavaScript a programming language?",
+      "question_type": 2,
+      "answers": [
+        { "id": 1, "text": "Yes", "is_correct": true },
+        { "id": 2, "text": "No", "is_correct": false }
+      ]
+    }
+  ]
+}

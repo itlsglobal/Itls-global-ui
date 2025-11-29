@@ -1,0 +1,404 @@
+{
+  "grades": [
+    {
+      "grade_id": 0,
+      "grade_name": "Kindergarten",
+      "subjects": [
+        {
+          "subject_id": 101,
+          "subject_name": "Mathematics",
+          "skill_categories": [
+            {
+              "skill_category_id": 1001,
+              "skill_category": "Counting",
+              "skills": [
+                "Counting to 10",
+                "Counting to 20",
+                "Counting to 50",
+                "Counting to 100",
+                "Counting Objects"
+              ]
+            },
+            {
+              "skill_category_id": 1002,
+              "skill_category": "Shapes",
+              "skills": [
+                "Circle",
+                "Square",
+                "Triangle",
+                "Rectangle",
+                "Polygon"
+              ]
+            }
+          ]
+        },
+        {
+          "subject_id": 102,
+          "subject_name": "Science",
+          "skill_categories": [
+            {
+              "skill_category_id": 2001,
+              "skill_category": "Weather",
+              "skills": [
+                "Sunny",
+                "Rainy",
+                "Cloudy",
+                "Stormy",
+                "Snowy"
+              ]
+            },
+            {
+              "skill_category_id": 2002,
+              "skill_category": "Plants",
+              "skills": [
+                "Parts of a Plant",
+                "Plant Growth",
+                "Photosynthesis",
+                "Plant Reproduction",
+                "Types of Plants"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "grade_id": 1,
+      "grade_name": "Grade 1",
+      "subjects": [
+        {
+          "subject_id": 103,
+          "subject_name": "Mathematics",
+          "skill_categories": [
+            {
+              "skill_category_id": 1003,
+              "skill_category": "Addition",
+              "skills": [
+                "Adding Single Digits",
+                "Adding Double Digits",
+                "Adding with Carrying",
+                "Word Problems on Addition",
+                "Addition Games"
+              ]
+            },
+            {
+              "skill_category_id": 1004,
+              "skill_category": "Subtraction",
+              "skills": [
+                "Subtracting Single Digits",
+                "Subtracting Double Digits",
+                "Subtracting with Borrowing",
+                "Word Problems on Subtraction",
+                "Subtraction Games"
+              ]
+            }
+          ]
+        },
+        {
+          "subject_id": 104,
+          "subject_name": "Science",
+          "skill_categories": [
+            {
+              "skill_category_id": 2003,
+              "skill_category": "Plants",
+              "skills": [
+                "Parts of a Plant",
+                "Plant Growth",
+                "Photosynthesis",
+                "Plant Reproduction",
+                "Types of Plants"
+              ]
+            },
+            {
+              "skill_category_id": 2004,
+              "skill_category": "Animals",
+              "skills": [
+                "Wild Animals",
+                "Domestic Animals",
+                "Animal Habitats",
+                "Animal Nutrition",
+                "Animal Reproduction"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "grade_id": 2,
+      "grade_name": "Grade 2",
+      "subjects": [
+        {
+          "subject_id": 105,
+          "subject_name": "Mathematics",
+          "skill_categories": [
+            {
+              "skill_category_id": 1005,
+              "skill_category": "Multiplication",
+              "skills": [
+                "Multiplying Single Digits",
+                "Multiplying Double Digits",
+                "Multiplication Tables",
+                "Word Problems on Multiplication",
+                "Multiplication Games"
+              ]
+            },
+            {
+              "skill_category_id": 1006,
+              "skill_category": "Division",
+              "skills": [
+                "Dividing Single Digits",
+                "Dividing Double Digits",
+                "Division Tables",
+                "Word Problems on Division",
+                "Division Games"
+              ]
+            }
+          ]
+        },
+        {
+          "subject_id": 106,
+          "subject_name": "History",
+          "skill_categories": [
+            {
+              "skill_category_id": 3001,
+              "skill_category": "Ancient Civilizations",
+              "skills": [
+                "Mesopotamia",
+                "Egypt",
+                "Indus Valley",
+                "China",
+                "Mesoamerica"
+              ]
+            },
+            {
+              "skill_category_id": 3002,
+              "skill_category": "Medieval Times",
+              "skills": [
+                "Feudalism",
+                "Knights and Castles",
+                "Medieval Art",
+                "Medieval Literature",
+                "Medieval Music"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "grade_id": 3,
+      "grade_name": "Grade 3",
+      "subjects": [
+        {
+          "subject_id": 107,
+          "subject_name": "English",
+          "skill_categories": [
+            {
+              "skill_category_id": 4001,
+              "skill_category": "Grammar",
+              "skills": [
+                "Nouns",
+                "Verbs",
+                "Adjectives",
+                "Adverbs",
+                "Prepositions"
+              ]
+            },
+            {
+              "skill_category_id": 4002,
+              "skill_category": "Reading Comprehension",
+              "skills": [
+                "Main Idea",
+                "Supporting Details",
+                "Making Inferences",
+                "Summarizing",
+                "Vocabulary"
+              ]
+            }
+          ]
+        },
+        {
+          "subject_id": 108,
+          "subject_name": "Science",
+          "skill_categories": [
+            {
+              "skill_category_id": 2005,
+              "skill_category": "Matter",
+              "skills": [
+                "States of Matter",
+                "Properties of Matter",
+                "Changes in Matter",
+                "Measuring Matter",
+                "Matter Experiments"
+              ]
+            },
+            {
+              "skill_category_id": 2006,
+              "skill_category": "Energy",
+              "skills": [
+                "Forms of Energy",
+                "Energy Transformation",
+                "Conservation of Energy",
+                "Energy Sources",
+                "Energy Experiments"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "grade_id": 4,
+      "grade_name": "Grade 4",
+      "subjects": [
+        {
+          "subject_id": 109,
+          "subject_name": "Mathematics",
+          "skill_categories": [
+            {
+              "skill_category_id": 1007,
+              "skill_category": "Fractions",
+              "skills": [
+                "Understanding Fractions",
+                "Equivalent Fractions",
+                "Adding Fractions",
+                "Subtracting Fractions",
+                "Multiplying Fractions"
+              ]
+            },
+            {
+              "skill_category_id": 1008,
+              "skill_category": "Geometry",
+              "skills": [
+                "Lines and Angles",
+                "Shapes and Figures",
+                "Perimeter and Area",
+                "Volume and Surface Area",
+                "Coordinate Geometry"
+              ]
+            }
+          ]
+        },
+        {
+          "subject_id": 110,
+          "subject_name": "Social Studies",
+          "skill_categories": [
+            {
+              "skill_category_id": 4003,
+              "skill_category": "Geography",
+              "skills": [
+                "Continents and Oceans",
+                "Maps and Globes",
+                "Landforms",
+                "Climate",
+                "Natural Resources"
+              ]
+            },
+            {
+              "skill_category_id": 4004,
+              "skill_category": "Countries and Cultures",
+              "skills": [
+                "Countries of the World",
+                "Cultural Practices",
+                "Languages",
+                "Religions",
+                "Festivals"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "grade_id": 5,
+      "grade_name": "Grade 5",
+      "subjects": [
+        {
+          "subject_id": 111,
+          "subject_name": "Mathematics",
+          "skill_categories": [
+            {
+              "skill_category_id": 1009,
+              "skill_category": "Decimals",
+              "skills": [
+                "Understanding Decimals",
+                "Adding Decimals",
+                "Subtracting Decimals",
+                "Multiplying Decimals",
+                "Dividing Decimals"
+              ]
+            },
+            {
+              "skill_category_id": 1010,
+              "skill_category": "Percentages",
+              "skills": [
+                "Understanding Percentages",
+                "Converting Fractions to Percentages",
+                "Calculating Percentages",
+                "Percentage Increase and Decrease",
+                "Real-life Applications of Percentages"
+              ]
+            }
+          ]
+        },
+        {
+          "subject_id": 112,
+          "subject_name": "Science",
+          "skill_categories": [
+            {
+              "skill_category_id": 2007,
+              "skill_category": "The Solar System",
+              "skills": [
+                "Planets",
+                "Stars",
+                "Moons",
+                "Asteroids",
+                "Comets"
+              ]
+            },
+            {
+              "skill_category_id": 2008,
+              "skill_category": "Human Body",
+              "skills": [
+                "Skeletal System",
+                "Muscular System",
+                "Circulatory System",
+                "Respiratory System",
+                "Digestive System"
+              ]
+            }
+          ]
+        },
+        {
+          "subject_id": 113,
+          "subject_name": "History",
+          "skill_categories": [
+            {
+              "skill_category_id": 3003,
+              "skill_category": "American Revolution",
+              "skills": [
+                "Causes of the Revolution",
+                "Major Battles",
+                "Key Figures",
+                "Declaration of Independence",
+                "Impact of the Revolution"
+              ]
+            },
+            {
+              "skill_category_id": 3004,
+              "skill_category": "World War I",
+              "skills": [
+                "Causes of WWI",
+                "Major Battles",
+                "Key Figures",
+                "Treaty of Versailles",
+                "Impact of WWI"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

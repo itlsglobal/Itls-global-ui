@@ -1,0 +1,134 @@
+{
+  "first_name": "John",
+  "last_name": "Doe",
+  "email": "johndoe@example.com",
+  "phone_number": "+1234567890",
+  "userRole": "Teacher",
+  "students": [
+    {
+      "student_id": "1",
+      "name": "UPASANA SAHU",
+      "grade": "5"
+    },
+    {
+      "student_id": "2",
+      "name": "Bob Williams",
+      "grade": "4"
+    },
+    {
+      "student_id": "3",
+      "name": "Charlie Brown",
+      "grade": "3"
+    },
+    {
+      "student_id": "4",
+      "name": "Diana Miller",
+      "grade": "6"
+    },
+    {
+      "student_id": "5",
+      "name": "Eva Davis",
+      "grade": "2"
+    },
+    {
+      "student_id": "6",
+      "name": "Frank Wilson",
+      "grade": "1"
+    },
+    {
+      "student_id": "7",
+      "name": "Grace Lee",
+      "grade": "4"
+    },
+    {
+      "student_id": "8",
+      "name": "Henry Clark",
+      "grade": "4"
+    },
+    {
+      "student_id": "9",
+      "name": "Ivy Adams",
+      "grade": "3"
+    },
+    {
+      "student_id": "10",
+      "name": "Jack White",
+      "grade": "6"
+    },
+    {
+      "student_id": "11",
+      "name": "Kara Scott",
+      "grade": "2"
+    },
+    {
+      "student_id": "12",
+      "name": "Leo King",
+      "grade": "1"
+    },
+    {
+      "student_id": "13",
+      "name": "Mia Green",
+      "grade": "5"
+    },
+    {
+      "student_id": "14",
+      "name": "Noah Hall",
+      "grade": "4"
+    },
+    {
+      "student_id": "15",
+      "name": "Olivia Young",
+      "grade": "3"
+    },
+    {
+      "student_id": "16",
+      "name": "Paul Allen",
+      "grade": "6"
+    },
+    {
+      "student_id": "17",
+      "name": "Quinn Baker",
+      "grade": "2"
+    },
+    {
+      "student_id": "18",
+      "name": "Ryan Cox",
+      "grade": "1"
+    },
+    {
+      "student_id": "19",
+      "name": "Sara Evans",
+      "grade": "5"
+    },
+    {
+      "student_id": "20",
+      "name": "Tom Hill",
+      "grade": "4"
+    },
+    {
+      "student_id": "21",
+      "name": "Uma Patel",
+      "grade": "3"
+    },
+    {
+      "student_id": "22",
+      "name": "Victor Reed",
+      "grade": "6"
+    },
+    {
+      "student_id": "23",
+      "name": "Wendy Cook",
+      "grade": "2"
+    },
+    {
+      "student_id": "24",
+      "name": "Xander Bell",
+      "grade": "1"
+    },
+    {
+      "student_id": "25",
+      "name": "Yara Gray",
+      "grade": "5"
+    }
+  ]
+}

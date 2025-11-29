@@ -1,0 +1,134 @@
+{
+    "questions": [
+        {
+            "id": 1,
+            "text": "What is the capital of France?",
+            "answers": [
+                {
+                    "id": 1,
+                    "text": "Berlin",
+                    "is_correct": false
+                },
+                {
+                    "id": 2,
+                    "text": "Madrid",
+                    "is_correct": false
+                },
+                {
+                    "id": 3,
+                    "text": "Paris",
+                    "is_correct": true
+                },
+                {
+                    "id": 4,
+                    "text": "Rome",
+                    "is_correct": false
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "text": "What is the largest planet in our solar system?",
+            "answers": [
+                {
+                    "id": 1,
+                    "text": "Earth",
+                    "is_correct": false
+                },
+                {
+                    "id": 2,
+                    "text": "Jupiter",
+                    "is_correct": true
+                },
+                {
+                    "id": 3,
+                    "text": "Mars",
+                    "is_correct": false
+                },
+                {
+                    "id": 4,
+                    "text": "Venus",
+                    "is_correct": false
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "text": "Who wrote 'Hamlet'?",
+            "answers": [
+                {
+                    "id": 1,
+                    "text": "Charles Dickens",
+                    "is_correct": false
+                },
+                {
+                    "id": 2,
+                    "text": "William Shakespeare",
+                    "is_correct": true
+                },
+                {
+                    "id": 3,
+                    "text": "Jane Austen",
+                    "is_correct": false
+                },
+                {
+                    "id": 4,
+                    "text": "Mark Twain",
+                    "is_correct": false
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "text": "What is the chemical symbol for gold?",
+            "answers": [
+                {
+                    "id": 1,
+                    "text": "Au",
+                    "is_correct": true
+                },
+                {
+                    "id": 2,
+                    "text": "Ag",
+                    "is_correct": false
+                },
+                {
+                    "id": 3,
+                    "text": "Fe",
+                    "is_correct": false
+                },
+                {
+                    "id": 4,
+                    "text": "Pb",
+                    "is_correct": false
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "text": "What is the speed of light?",
+            "answers": [
+                {
+                    "id": 1,
+                    "text": "300,000 km/s",
+                    "is_correct": true
+                },
+                {
+                    "id": 2,
+                    "text": "150,000 km/s",
+                    "is_correct": false
+                },
+                {
+                    "id": 3,
+                    "text": "450,000 km/s",
+                    "is_correct": false
+                },
+                {
+                    "id": 4,
+                    "text": "600,000 km/s",
+                    "is_correct": false
+                }
+            ]
+        }
+    ]
+}

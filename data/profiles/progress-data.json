@@ -1,0 +1,58 @@
+{
+  "students": [
+    {
+      "id": 1,
+      "name": "Alice Johnson",
+      "current_grade": "5",
+      "subjects": {
+        "math": [
+          {"grade": "5", "total": 100, "attempted": 75, "percentage": 75},
+          {"grade": "6", "total": 120, "attempted": 60, "percentage": 50}
+        ],
+        "english": [
+          {"grade": "5", "total": 80, "attempted": 40, "percentage": 50},
+          {"grade": "6", "total": 90, "attempted": 60, "percentage": 67}
+        ],
+        "science": [
+          {"grade": "5", "total": 90, "attempted": 45, "percentage": 50},
+          {"grade": "6", "total": 100, "attempted": 70, "percentage": 70}
+        ],
+        "history": [
+          {"grade": "5", "total": 60, "attempted": 30, "percentage": 50},
+          {"grade": "6", "total": 70, "attempted": 50, "percentage": 71}
+        ],
+        "geography": [
+          {"grade": "5", "total": 50, "attempted": 40, "percentage": 80},
+          {"grade": "6", "total": 60, "attempted": 45, "percentage": 75}
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "name": "Bob Williams",
+      "current_grade": "4",
+      "subjects": {
+        "math": [
+          {"grade": "4", "total": 90, "attempted": 72, "percentage": 80},
+          {"grade": "5", "total": 100, "attempted": 70, "percentage": 70}
+        ],
+        "english": [
+          {"grade": "4", "total": 70, "attempted": 56, "percentage": 80},
+          {"grade": "5", "total": 80, "attempted": 60, "percentage": 75}
+        ],
+        "science": [
+          {"grade": "4", "total": 80, "attempted": 64, "percentage": 80},
+          {"grade": "5", "total": 90, "attempted": 60, "percentage": 67}
+        ],
+        "history": [
+          {"grade": "4", "total": 60, "attempted": 42, "percentage": 70},
+          {"grade": "5", "total": 70, "attempted": 50, "percentage": 71}
+        ],
+        "geography": [
+          {"grade": "4", "total": 50, "attempted": 30, "percentage": 60},
+          {"grade": "5", "total": 60, "attempted": 40, "percentage": 67}
+        ]
+      }
+    }
+  ]
+}

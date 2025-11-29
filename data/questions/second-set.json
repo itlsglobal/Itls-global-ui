@@ -1,0 +1,222 @@
+{
+  "grades": [
+    {
+      "grade_id": 0,
+      "grade_name": "Kindergarten",
+      "subjects": [
+        {
+          "subject_id": 101,
+          "subject_name": "Mathematics",
+          "topics": [
+            {
+              "topic_id": 1001,
+              "topic_description": "Counting"
+            },
+            {
+              "topic_id": 1002,
+              "topic_description": "Shapes"
+            }
+          ]
+        },
+        {
+          "subject_id": 102,
+          "subject_name": "Science",
+          "topics": [
+            {
+              "topic_id": 2001,
+              "topic_description": "Weather"
+            },
+            {
+              "topic_id": 2002,
+              "topic_description": "Plants"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "grade_id": 1,
+      "grade_name": "Grade 1",
+      "subjects": [
+        {
+          "subject_id": 103,
+          "subject_name": "Mathematics",
+          "topics": [
+            {
+              "topic_id": 1003,
+              "topic_description": "Addition"
+            },
+            {
+              "topic_id": 1004,
+              "topic_description": "Subtraction"
+            }
+          ]
+        },
+        {
+          "subject_id": 104,
+          "subject_name": "Science",
+          "topics": [
+            {
+              "topic_id": 2003,
+              "topic_description": "Plants"
+            },
+            {
+              "topic_id": 2004,
+              "topic_description": "Animals"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "grade_id": 2,
+      "grade_name": "Grade 2",
+      "subjects": [
+        {
+          "subject_id": 105,
+          "subject_name": "Mathematics",
+          "topics": [
+            {
+              "topic_id": 1005,
+              "topic_description": "Multiplication"
+            },
+            {
+              "topic_id": 1006,
+              "topic_description": "Division"
+            }
+          ]
+        },
+        {
+          "subject_id": 106,
+          "subject_name": "History",
+          "topics": [
+            {
+              "topic_id": 3001,
+              "topic_description": "Ancient Civilizations"
+            },
+            {
+              "topic_id": 3002,
+              "topic_description": "Medieval Times"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "grade_id": 3,
+      "grade_name": "Grade 3",
+      "subjects": [
+        {
+          "subject_id": 107,
+          "subject_name": "English",
+          "topics": [
+            {
+              "topic_id": 4001,
+              "topic_description": "Grammar"
+            },
+            {
+              "topic_id": 4002,
+              "topic_description": "Reading Comprehension"
+            }
+          ]
+        },
+        {
+          "subject_id": 108,
+          "subject_name": "Science",
+          "topics": [
+            {
+              "topic_id": 2005,
+              "topic_description": "Matter"
+            },
+            {
+              "topic_id": 2006,
+              "topic_description": "Energy"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "grade_id": 4,
+      "grade_name": "Grade 4",
+      "subjects": [
+        {
+          "subject_id": 109,
+          "subject_name": "Mathematics",
+          "topics": [
+            {
+              "topic_id": 1007,
+              "topic_description": "Fractions"
+            },
+            {
+              "topic_id": 1008,
+              "topic_description": "Geometry"
+            }
+          ]
+        },
+        {
+          "subject_id": 110,
+          "subject_name": "Social Studies",
+          "topics": [
+            {
+              "topic_id": 4003,
+              "topic_description": "Geography"
+            },
+            {
+              "topic_id": 4004,
+              "topic_description": "Countries and Cultures"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "grade_id": 5,
+      "grade_name": "Grade 5",
+      "subjects": [
+        {
+          "subject_id": 111,
+          "subject_name": "Mathematics",
+          "topics": [
+            {
+              "topic_id": 1009,
+              "topic_description": "Decimals"
+            },
+            {
+              "topic_id": 1010,
+              "topic_description": "Percentages"
+            }
+          ]
+        },
+        {
+          "subject_id": 112,
+          "subject_name": "Science",
+          "topics": [
+            {
+              "topic_id": 2007,
+              "topic_description": "The Solar System"
+            },
+            {
+              "topic_id": 2008,
+              "topic_description": "Human Body"
+            }
+          ]
+        },
+        {
+          "subject_id": 113,
+          "subject_name": "History",
+          "topics": [
+            {
+              "topic_id": 3003,
+              "topic_description": "American Revolution"
+            },
+            {
+              "topic_id": 3004,
+              "topic_description": "World War I"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
