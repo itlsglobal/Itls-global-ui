@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ITLS</title>
+  <link rel="stylesheet" href="css/pages/styles.css" />
+  <link rel="stylesheet" href="css/themes/creamy_gray_theme_minimal.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <!-- MDB CSS for ripple effect -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.css" rel="stylesheet" />
+
+  <style>
+    /* Remove custom grade card styles, revert to original */
+    .highlight-login {
+      box-shadow: 0 0 0 4px #1976d2, 0 2px 16px #1976d2a0;
+      transition: box-shadow 0.3s;
+    }
+  </style>
+  <!-- Tailwind CDN for utility classes -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <style>
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+    }
+
+    .scrollbar-hide {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Enhanced Grade Card Design */
+    .grade-card-shadow {
+      box-shadow: 0 4px 24px 0 rgba(60, 72, 88, 0.10), 0 1.5px 6px 0 rgba(25, 118, 210, 0.08);
+      transition: box-shadow 0.25s, transform 0.18s;
+      border-radius: 1rem;
+      border: 3px solid transparent;
+      background-clip: padding-box, border-box;
+      background-origin: border-box;
+      background-image:
+        linear-gradient(white, white),
+        linear-gradient(120deg, #f6d365 0%, #fda085 50%, #fbc2eb 100%);
+    }
+
+    .grade-card-shadow:hover {
+      transform: translateY(-6px) scale(1.025);
+      box-shadow: 0 8px 32px 0 #fbc2eb80, 0 2px 16px #fda085cc;
+      border-color: #fda085;
+    }
+
+    /* Individual hover shadows for each grade */
+    .border-yellow-300.grade-card-shadow:hover {
+      box-shadow: 0 8px 32px 0 #fde04780, 0 2px 16px #fde047cc;
+      border-color: #fde047;
+    }
+
+    .border-purple-300.grade-card-shadow:hover {
+      box-shadow: 0 8px 32px 0 #c4b5fd80, 0 2px 16px #a78bfa99;
+      border-color: #a78bfa;
+    }
+
+    .border-cyan-300.grade-card-shadow:hover {
+      box-shadow: 0 8px 32px 0 #67e8f980, 0 2px 16px #06b6d499;
+      border-color: #06b6d4;
+    }
+
+    .border-blue-300.grade-card-shadow:hover {
+      box-shadow: 0 8px 32px 0 #93c5fd80, 0 2px 16px #3b82f699;
+      border-color: #3b82f6;
+    }
+
+    .border-green-300.grade-card-shadow:hover {
+      box-shadow: 0 8px 32px 0 #6ee7b780, 0 2px 16px #22d3ee99;
+      border-color: #22d3ee;
+    }
+
+    .border-orange-300.grade-card-shadow:hover {
+      box-shadow: 0 8px 32px 0 #fdba7480, 0 2px 16px #fb923c99;
+      border-color: #fb923c;
+    }
+
+    .border-gray-300.grade-card-shadow:hover {
+      box-shadow: 0 8px 32px 0 #d1d5db80, 0 2px 16px #6b728099;
+      border-color: #6b7280;
+    }
+
+    /* Footer stick to bottom */
+    .page-wrapper {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .main-content {
+      flex: 1 0 auto;
+    }
+
+    .footer {
+      flex-shrink: 0;
+      margin-top: auto;
+    }
+
+    /* Push skill count a little right in grade cards */
+    /* .grade-card-shadow .text-blue-600 {
+      margin-left: 24px;
+    } */
+    .grade-btn {
+      pointer-events: auto !important;
+      z-index: 1000 !important;
+      position: relative;
+      border: 2px dashed #f00 !important;
+      /* DEBUG: Remove after test */
+    }
+
+    .typewriter-welcome {
+      color: #1976d2;
+      font-size: 1rem;
+      font-weight: bold;
+      font-family: 'Poppins', Arial, sans-serif;
+      margin: 0;
+      text-align: right;
+      letter-spacing: 0.5px;
+      min-height: 2.5em;
+      padding-top: 12px;
+      border-right: none;
+      white-space: normal;
+      overflow: visible;
+      animation: none !important;
+      background: transparent !important;
+      line-height: 1.2;
+    }
+
+    .welcome-container {
+      position: fixed !important;
+      top: -12px !important;
+      right: 70px !important;
+      z-index: 99998 !important;
+      display: flex !important;
+      justify-content: flex-end !important;
+      align-items: center !important;
+      background: transparent !important;
+      text-align: right !important;
+    }
+
+    /* Welcome message styling */
+    /* Modern grade circle and name styling */
+    .grade-circle {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      font-weight: 700;
+      box-shadow: 0 2px 12px 0 rgba(60, 72, 88, 0.10);
+      margin-right: 18px;
+      letter-spacing: 1px;
+      font-family: 'Poppins', Arial, sans-serif;
+      transition: transform 0.18s;
+    }
+
+    .grade-card-title {
+      font-family: 'Poppins', Arial, sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 0;
+      letter-spacing: 0.5px;
+      color: #222;
+    }
+
+    .grade-card-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.2rem;
+      text-align: left;
+    }
+  </style>
+  <style>
+    /* Ensure profile dropdown menu appears above menu boxes */
+    .dropdown-menu.dropdown-menu-end {
+      position: absolute !important;
+      z-index: 2000 !important;
+    }
+
+    /* Ensure all form elements are clickable */
+    input,
+    button,
+    select,
+    textarea,
+    a,
+    .dropdown,
+    .btn {
+      pointer-events: auto !important;
+    }
+
+    /* Ensure login form is above other elements */
+    #login-form,
+    .input-container,
+    #username,
+    #password,
+    .button-container {
+      position: relative !important;
+      z-index: 10000 !important;
+    }
+
+    /* Reduce header height */
+    .header-section {
+      min-height: auto !important;
+      padding-top: 5px !important;
+      padding-bottom: 0px !important;
+      margin-bottom: -10px !important;
+      max-height: 90px !important;
+      overflow: hidden !important;
+    }
+
+    /* Compact login form */
+    .input-container {
+      margin-bottom: 0 !important;
+      padding: 0 !important;
+    }
+
+    .form-control-custom {
+      padding: 2px 8px !important;
+      margin-bottom: 2px !important;
+      height: 40px !important;
+      font-size: 0.9rem !important;
+    }
+
+    .button-container {
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+      display: flex !important;
+      flex-direction: row !important;
+      align-items: center !important;
+      justify-content: flex-start !important;
+      gap: 5px !important;
+      flex-wrap: nowrap !important;
+    }
+
+    /* Bootstrap-style buttons with ripple effect */
+    .btn-primary {
+      background-color: #1266f1 !important;
+      color: white !important;
+      border-radius: 4px !important;
+      padding: 6px 12px !important;
+      font-size: 0.9rem !important;
+      border: none !important;
+      margin-right: 5px !important;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2) !important;
+      transition: all 0.2s ease !important;
+    }
+
+    .btn-primary:hover {
+      background-color: #0c56d0 !important;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3) !important;
+    }
+
+    .btn-secondary {
+      background-color: #ffd000 !important;
+      color: #053361 !important;
+      border-radius: 4px !important;
+      padding: 6px 12px !important;
+      font-size: 0.9rem !important;
+      border: none !important;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2) !important;
+      transition: all 0.2s ease !important;
+    }
+
+    .btn-secondary:hover {
+      background-color: #5a6268 !important;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3) !important;
+    }
+
+    .btn-tertiary {
+      background-color: #f8f9fa !important;
+      color: #212529 !important;
+      border-radius: 4px !important;
+      padding: 6px 12px !important;
+      font-size: 0.9rem !important;
+      border: 1px solid #dee2e6 !important;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) !important;
+      transition: all 0.2s ease !important;
+    }
+
+    .btn-tertiary:hover {
+      background-color: #e2e6ea !important;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+    }
+
+    /* Modern Forgot Password Modal Styles */
+    #forgot-password-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 99999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .fp-modal-content {
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 8px 32px rgba(25, 118, 210, 0.18);
+      max-width: 700px;
+      margin: 160px auto;
+      padding: 32px 28px 24px 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    .fp-modal-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .fp-modal-icon {
+      font-size: 2rem;
+      color: #1976d2;
+    }
+
+    .fp-modal-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin: 0;
+      color: #053361;
+    }
+
+    .fp-modal-desc {
+      font-size: 0.98rem;
+      color: #444;
+      margin-bottom: 18px;
+      text-align: center;
+    }
+
+    .fp-modal-input {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 7px;
+      border: 1px solid #d1d5db;
+      font-size: 1rem;
+      margin-bottom: 18px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .fp-modal-input:focus {
+      border-color: #1976d2;
+    }
+
+    .fp-modal-actions {
+      display: flex;
+      gap: 12px;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .fp-btn {
+      padding: 8px 18px;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 500;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+
+    .fp-btn-primary {
+      background: #1976d2;
+      color: #fff;
+      box-shadow: 0 2px 8px rgba(25, 118, 210, 0.08);
+    }
+
+    .fp-btn-primary:hover {
+      background: #1256a1;
+    }
+
+    .fp-btn-secondary {
+      background: #f3f4f6;
+      color: #053361;
+      border: 1px solid #d1d5db;
+    }
+
+    .fp-btn-secondary:hover {
+      background: #e2e6ea;
+    }
+  </style>
+</head>
+
+<body
+  style="background: url('https://via.placeholder.com/1920x1080.png?text=Test+Background') no-repeat center center fixed; background-size: cover; position: relative;">
+  <div class="page-wrapper">
+    <div class="main-content">
+      <div id="forgot-password-modal" style="display:none;">
+        <div class="fp-modal-content">
+          <div class="fp-modal-header">
+            <i class="fas fa-key fp-modal-icon"></i>
+            <h3 class="fp-modal-title">Forgot Password</h3>
+          </div>
+          <p class="fp-modal-desc">Enter your registered email to reset your password.</p>
+          <input type="email" id="reset-email" class="fp-modal-input" placeholder="Enter your email" required />
+          <div class="fp-modal-actions">
+            <button class="fp-btn fp-btn-primary" onclick="sendResetLink()">Send Reset Link</button>
+            <button class="fp-btn fp-btn-secondary" onclick="closeModal()">Close</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Overlay container -->
+      <div id="overlay"
+        style="display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 20000;">
+        <iframe src="pages/registration/membership-options.html"
+          style="width: 100%; height: 100%; border: none;"></iframe>
+      </div>
+
+      <section id="top-header" class="header-section">
+        <div class="container-fluid" style="padding-top: 0; padding-bottom: 0;">
+          <div class="row p-0">
+            <div class="col-12 col-sm-4">
+              <!-- <div
+                  class="d-flex align-items-center justify-content-center justify-content-md-start"
+                >
+                  <img
+                    class="logo"
+                    style="height: 45px; width: auto"
+                    < src="images/logo2.png"
+                    alt="ITLS Logo">
+                  
+                </div> -->
+            </div>
+
+            <div class="col-12 col-sm-8 my-0">
+              <div id="login-form" class="modern-form">
+                <div class="input-container">
+                  <input type="text" id="username" class="form-control-custom" placeholder="Username" required />
+                  <input type="password" id="password" class="form-control-custom" placeholder="Password" required />
+                  <div class="dropdown glass-effect whoami-dropdown"
+                    style="position: relative; z-index: 3000; margin-top: 8px;">
+                    <button class="btn dropdown-toggle user-type-btn glass-effect" type="button" id="languageDropdown"
+                      data-bs-toggle="dropdown" data-bs-display="static" data-bs-boundary="viewport"
+                      aria-expanded="false">
+                      <i class="fas fa-user-circle me-1"></i> Who Am I?
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-animated tiny-dropdown whoami-menu"
+                      aria-labelledby="languageDropdown">
+                      <li>
+                        <a class="dropdown-item tiny-item" href="#" data-lang="en"><i
+                            class="fas fa-chalkboard-teacher tiny-icon"></i>Teacher</a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item tiny-item" href="#" data-lang="es"><i
+                            class="fas fa-user-friends tiny-icon"></i>Parent</a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item tiny-item" href="#" data-lang="fr"><i
+                            class="fas fa-user-graduate tiny-icon"></i>Student</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <style>
+                    /* Fix Who Am I dropdown overlapping and clipping */
+                    .whoami-dropdown {
+                      position: relative !important;
+                      z-index: 3000 !important;
+                      overflow: visible !important;
+                      margin-left: 0 !important;
+                      padding-left: 0 !important;
+                    }
+
+                    /* Fix vertical alignment of text in Who Am I button */
+                    /* .user-type-btn {
+                      display: flex !important;
+                      align-items: center !important;
+                      justify-content: center !important;
+                      line-height: 1 !important;
+                      padding-top: 8px !important;
+                      padding-bottom: 4px !important;
+                      height: 32px !important;
+                    } */
+
+                    .user-type-btn {
+                      display: flex !important;
+                      align-items: center !important;
+                      justify-content: center !important;
+                      line-height: 1 !important;
+                      padding: 6px 12px !important;
+                      height: 30px !important;
+                      background: rgba(255, 255, 255, 0.9) !important;
+                      border: 1px solid rgba(255, 255, 255, 0.3) !important;
+                      border-radius: 6px !important;
+                      color: #053361 !important;
+                      font-weight: 600 !important;
+                      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) !important;
+                      transition: all 0.3s ease !important;
+                    }
+
+                    .user-type-btn:hover {
+                      background: white !important;
+                      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15) !important;
+                    }
+
+                    .whoami-dropdown {
+                      border: none !important;
+                      background: none !important;
+                      box-shadow: none !important;
+                    }
+
+                    .whoami-menu {
+                      position: absolute !important;
+                      z-index: 110000 !important;
+                      overflow: visible !important;
+                      /* left: 1115px !important; */
+                      min-width: 150px !important;
+                      white-space: nowrap !important;
+                    }
+
+                    /* Override overflow hidden on parent containers if any */
+                    #login-form,
+                    .input-container {
+                      overflow: visible !important;
+                    }
+
+                    /* Ensure menu-bg and menu-box containers do not clip dropdowns */
+                    .menu-bg,
+                    .menu-box {
+                      position: relative !important;
+                      z-index: 1 !important;
+                      overflow: visible !important;
+                    }
+                  </style>
+                  <div style="text-align: right" class="forgot-link-container">
+                    <a href="#" class="forgot-password"
+                      style="margin-left: 20px;margin-right: -130px;margin-top: 0px;font-size: 0.8rem;"
+                      onclick="openModal()"><i class="fas fa-key me-1"></i>Forgot Password?</a>
+                  </div>
+                  <div class="button-container"
+                    style="margin-top: 0px; margin-right: -30px; display: flex; align-items: center; flex-direction: row; flex-wrap: nowrap; gap: 5px;">
+                    <button type="button" class="btn btn-primary" data-mdb-ripple-init id="login-btn"><i
+                        class="fas fa-sign-in-alt me-1"></i> Log in</button>
+                    <button type="button" class="btn btn-secondary" data-mdb-ripple-init onclick="showOverlay()">
+                      <i class="fas fa-user-plus me-1"></i> Sign Up
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+              <div class="welcome-container" id="welcome-container"
+                style="display: none; text-align: right; margin-top: -30px; position: fixed; top: 15px; right: 70px; z-index: 99998; display: flex; justify-content: flex-end; align-items: center; background: transparent;">
+                <h2 class="welcome-message typewriter-welcome" id="typewriter-welcome"></h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="dropdown user-profile-dropdown" style="position: fixed; top: 15px; right: 28px; z-index: 200000;">
+        <button class="btn user-menu-btn pulse-animation" type="button" id="userDropdown" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          <span id="userInitial" class="user-avatar" data-initial-type="first-letter">A</span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end shadow-lg fade-in-dropdown" aria-labelledby="userDropdown">
+          <li>
+            <a class="dropdown-item slide-effect" href="profile.html">
+              <i class="fas fa-user me-2 text-primary icon-pulse"></i>
+              <span>Profile</span>
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item slide-effect" href="settings.html">
+              <i class="fas fa-tachometer-alt me-2 text-success icon-pulse"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item slide-effect" href="#" id="dropdown-logout-btn">
+              <i class="fas fa-sign-out-alt me-2 text-danger icon-pulse"></i>
+              <span>Sign Out</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <section class="menu-section" style="margin-top: -5px;">
+        <div class="menu-bg"
+          style="display: flex; justify-content: flex-start; gap: 20px; padding: 5px; margin-left: -5px; position: relative;">
+          <div class="menu-box" style="flex: 1; margin-left: -20px;">
+            <div class="menu-wp" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+              <div class="menu-item-yellow" onclick="window.location.href='pages/menu/menu.html'"
+                onmouseover="this.style.boxShadow='0 12px 30px rgba(0,0,0,0.5)'; this.style.transform='translateY(-8px)';"
+                onmouseout="this.style.boxShadow='0 8px 20px rgba(0,0,0,0.3)'; this.style.transform='translateY(0)';">
+                <div
+                  style="position: absolute; top: 0; left: 0; width: 100%; height: 10px; ; border-top-left-radius: 8px; border-top-right-radius: 8px;">
+                </div>
+                <span style="font-size: 1.4rem;font-weight: bold;">📚 Skill</span>
+              </div>
+            </div>
+          </div>
+          <div class="menu-box" style="flex: 1; margin-left: -90px;">
+            <div class="menu-wp" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+              <div class="menu-item-yellow" onclick="window.location.href='pages/menu/menu.html'"
+                onmouseover="this.style.boxShadow='0 12px 30px rgba(0,0,0,0.5)'; this.style.transform='translateY(-8px)';"
+                onmouseout="this.style.boxShadow='0 8px 20px rgba(0,0,0,0.3)'; this.style.transform='translateY(0)';">
+
+                <div
+                  style="position: absolute; top: 0; left: 0; width: 100%; height: 10px; border-top-left-radius: 8px; border-top-right-radius: 8px;">
+                </div>
+                <span
+                  style="display: flex; align-items: center; gap: 6px; font-weight: bold; font-size: 1.2rem; margin-top: 8px; display: inline-flex;">
+                  <span>🏗️</span>
+                  <span>Skill<br>Bulding</span>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="menu-box" style="flex: 1; margin-left: -105px;">
+            <div class="menu-wp" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+              <div class="menu-item-yellow" onclick="window.location.href='pages/menu/menu.html'"
+                onmouseover="this.style.boxShadow='0 12px 30px rgba(0,0,0,0.5)'; this.style.transform='translateY(-8px)';"
+                onmouseout="this.style.boxShadow='0 8px 20px rgba(0,0,0,0.3)'; this.style.transform='translateY(0)';">
+                <div
+                  style="position: absolute; top: 0; left: 0; width: 100%; height: 10px; border-top-left-radius: 8px; border-top-right-radius: 8px;">
+                </div>
+                <span
+                  style="display: flex; align-items: center; gap: 6px; font-weight: bold; font-size: 1.2rem; margin-top: 8px; display: inline-flex;">
+                  <span>📝</span>
+                  <span>Skill<br>Evaluation</span>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="menu-box" style="flex: 1; margin-left: -90px;">
+            <div class="menu-wp" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+              <div class="menu-item-yellow" onclick="window.location.href='pages/menu/menu.html'"
+                style="margin-left: -50px;"
+                onmouseover="this.style.boxShadow='0 12px 30px rgba(0,0,0,0.5)'; this.style.transform='translateY(-8px)';"
+                onmouseout="this.style.boxShadow='0 8px 20px rgba(0,0,0,0.3)'; this.style.transform='translateY(0)';">
+                <div
+                  style="position: absolute; top: 0; left: 0; width: 100%; height: 10px;border-top-left-radius: 8px; border-top-right-radius: 8px;">
+                </div>
+
+                <div
+                  style="position: absolute; top: 8px; left: 0; width: 100%; height: 10px; border-top-left-radius: 8px; border-top-right-radius: 8px;">
+                </div>
+                <span
+                  style="display: flex; align-items: center; gap: 6px; font-weight: bold; font-size: 1.2rem; margin-top: 8px; display: inline-flex;">
+                  <span>🔍</span>
+                  <span>Skill<br>Analysis</span>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="menu-box" style="flex: 1; margin-left: -90px;">
+            <div class="menu-wp" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+              <div class="menu-item-yellow" onclick="window.location.href='pages/menu/menu.html'"
+                style="margin-left: -50px;"
+                onmouseover="this.style.boxShadow='0 12px 30px rgba(0,0,0,0.5)'; this.style.transform='translateY(-8px)';"
+                onmouseout="this.style.boxShadow='0 8px 20px rgba(0,0,0,0.3)'; this.style.transform='translateY(0)';">
+                <div
+                  style="position: absolute; top: 0; left: 0; width: 100%; height: 10px; border-top-left-radius: 8px; border-top-right-radius: 8px;">
+                </div>
+                <span style="font-size: 1.3rem; font-weight: bold;">🛠️ Support</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <style>
+        /* Only disable text animations, keep box hover effects */
+        .menu-item span,
+        .menu-item i {
+          animation: none !important;
+          transition: none !important;
+          transform: none !important;
+        }
+
+        .menu-item::before,
+        .menu-item::after {
+          display: none !important;
+        }
+
+        /* Keep box hover animations */
+        .menu-item {
+          transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .menu-item:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+          border-color: #0d0a2c;
+        }
+
+        /* Disable any text animations */
+        .menu-item span {
+          animation: none !important;
+          transition: none !important;
+        }
+
+        /* Disable typewriter animation */
+        .typewriter-welcome {
+          animation: none !important;
+          transition: none !important;
+        }
+      </style>
+
+      <section class="container-fluid">
+        <div class="row px-5">
+          <div class="col-2 col-sm-2 p-4 d-block">
+            <h5 class="grade-nav-title mb-3 text-center"><i class="fas fa-book"></i> Grade Levels</h5>
+            <div class="btn-group-vertical grade-nav-buttons" role="group" aria-label="Vertical button group">
+              <button type="button" class="btn btn-primary custom-primary grade-btn pre-k mb-2" data-grade-id="0">
+                <i class="fas fa-graduation-cap me-2"></i> Pre-K
+              </button>
+              <button type="button" class="btn btn-primary custom-primary grade-btn grade-1 mb-2" data-grade-id="1">
+                <i class="fas fa-child me-2"></i> 1st-Grade
+              </button>
+              <button type="button" class="btn btn-primary custom-primary grade-btn grade-2 mb-2" data-grade-id="2">
+                <i class="fas fa-book-reader me-2"></i> 2nd-Grade
+              </button>
+              <button type="button" class="btn btn-primary custom-primary grade-btn grade-3 mb-2" data-grade-id="3">
+                <i class="fas fa-pencil-alt me-2"></i> 3rd-Grade
+              </button>
+              <button type="button" class="btn btn-primary custom-primary grade-btn grade-4 mb-2" data-grade-id="4">
+                <i class="fas fa-calculator me-2"></i> 4th-Grade
+              </button>
+              <button type="button" class="btn btn-primary custom-primary grade-btn grade-5" data-grade-id="5">
+                <i class="fas fa-flask me-2"></i> 5th-Grade
+              </button>
+            </div>
+          </div>
+          <div class="col-12 col-sm-8 pb-5">
+            <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel"
+              data-bs-interval="3000">
+              <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
+                  aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
+                  aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"
+                  aria-label="Slide 3"></button>
+              </div>
+              <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="3000">
+                  <div class="sld-box">
+                    <img class="slider-img" src="assets/images/sld1.PNG" />
+                  </div>
+                  <div class="carousel-caption d-none d-md-block">
+                    <h5>First slide label</h5>
+                    <p>
+                      Some representative placeholder content for the first slide.
+                    </p>
+                  </div>
+                </div>
+                <div class="carousel-item" data-bs-interval="2000">
+                  <div class="sld-box">
+                    <img class="slider-img"
+                      src="https://img.freepik.com/free-photo/school-children-busy-writing-notes-using-digital-tablet-class_23-2148039920.jpg?w=996&t=st=1711206205~exp=1711206805~hmac=ee0c82daf8f5dc018ebdd6dab0a752528275e1cb6c507f387637f5953ae36e68" />
+                  </div>
+                  <div class="carousel-caption d-none d-md-block">
+                    <h5>Second slide label</h5>
+                    <p>
+                      Some representative placeholder content for the second
+                      slide.
+                    </p>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="sld-box">
+                    <img class="slider-img"
+                      src="https://img.freepik.com/free-photo/positive-student-with-classmates-background_1098-2630.jpg?w=1060&t=st=1711206105~exp=1711206705~hmac=806e147d3372bd685cf31d4ba00c4223198c18648c674e4264aedbc8a5bf0e29" />
+                  </div>
+                  <div class="carousel-caption d-none d-md-block">
+                    <h5>Third slide label</h5>
+                    <p>
+                      Some representative placeholder content for the third slide.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="container-xxl grade-container">
+        <div class="grade-header">
+          <div class="section-title-wrapper">
+            <h1 class="section-title"><i class="fas fa-graduation-cap title-icon"></i>Learn By Grade</h1>
+            <div class="title-underline"></div>
+          </div>
+          <p class="section-subtitle">Choose your grade level to start exploring curriculum-aligned content</p>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 py-8">
+          <div id="grade-cards-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+            <!-- Grade cards will be rendered here by JS -->
+          </div>
+        </div>
+      </div>
+      <script>
+        fetch('data/grades/gradesData.json')
+          .then(response => response.json())
+          .then(data => {
+            const gradeCardsContainer = document.getElementById('grade-cards-container');
+            gradeCardsContainer.innerHTML = '';
+            data.grades.forEach(grade => {
+              let colorClass = '';
+              switch (grade.grade_id) {
+                case 0: colorClass = 'border-yellow-300 bg-yellow-200 text-yellow-800'; break;
+                case 1: colorClass = 'border-purple-300 bg-purple-200 text-purple-800'; break;
+                case 2: colorClass = 'border-cyan-300 bg-cyan-200 text-cyan-800'; break;
+                case 3: colorClass = 'border-pink-300 bg-pink-200 text-pink-800'; break;
+                case 4: colorClass = 'border-green-300 bg-green-200 text-green-800'; break;
+                case 5: colorClass = 'border-orange-300 bg-orange-200 text-orange-800'; break;
+                default: colorClass = 'border-gray-300 bg-gray-200 text-gray-800';
+              }
+              let subjectsHtml = '';
+              let subjectNames = [];
+              grade.subjects.forEach(subject => {
+                subjectNames.push(subject.subject_name);
+                let skillCount = 0;
+                if (subject.skill_categories) {
+                  subject.skill_categories.forEach(skill_category => {
+                    skillCount += (skill_category.skills ? skill_category.skills.length : 0);
+                  });
+                }
+                subjectsHtml += `
+                <div class="flex items-center text-left w-full">
+                  <span>${subject.subject_name}</span>
+                  <span class="text-blue-600 cursor-pointer hover:underline ml-auto">${skillCount} skills →</span>
+                </div>
+              `;
+              });
+              // Dynamic description based on present subjects
+              let description = '';
+              const subjectList = subjectNames.length === 1
+                ? `<b>${subjectNames[0]}</b>`
+                : subjectNames.length === 2
+                  ? `<b>${subjectNames[0]}</b> and <b>${subjectNames[1]}</b>`
+                  : subjectNames.length > 2
+                    ? `<b>${subjectNames.slice(0, -1).join('</b>, <b>')}</b> and <b>${subjectNames[subjectNames.length - 1]}</b>`
+                    : '';
+
+              switch (grade.grade_id) {
+                case 0:
+                  description = subjectNames.length > 0
+                    ? `Kindergarten is all about joyful beginnings! Kids discover the world through fun in ${subjectList}.`
+                    : 'Kindergarten is all about joyful beginnings!';
+                  break;
+                case 1:
+                  description = subjectNames.length > 0
+                    ? `Grade 1 sparks curiosity with exciting lessons in ${subjectList}.`
+                    : 'Grade 1 sparks curiosity and wonder.';
+                  break;
+                case 2:
+                  description = subjectNames.length > 0
+                    ? `Second grade builds confidence as students explore ${subjectList}.`
+                    : 'Second grade builds confidence and skills.';
+                  break;
+                case 3:
+                  description = subjectNames.length > 0
+                    ? `Third grade encourages independent thinking with engaging topics like ${subjectList}.`
+                    : 'Third grade encourages independent thinking.';
+                  break;
+                case 4:
+                  description = subjectNames.length > 0
+                    ? `Fourth grade deepens understanding through hands-on learning in ${subjectList}.`
+                    : 'Fourth grade deepens understanding.';
+                  break;
+                case 5:
+                  description = subjectNames.length > 0
+                    ? `Fifth grade prepares students for new challenges with a rich mix of ${subjectList}.`
+                    : 'Fifth grade prepares students for new challenges.';
+                  break;
+                default:
+                  description = subjectNames.length > 0
+                    ? `A wonderful year of learning in ${subjectList}.`
+                    : 'A wonderful year of learning.';
+              }
+              gradeCardsContainer.innerHTML += `
+              <div class="relative w-full ${colorClass.split(' ')[0]} rounded-xl p-7 flex flex-col justify-between min-h-[320px] bg-white grade-card-shadow" onclick="window.location.href='/src/Home/secondPage.html?grade=${grade.grade_id}'">
+                <div class="grade-card-header">
+                  <div class="grade-circle ${colorClass}">${grade.grade_id === 0 ? 'KG' : grade.grade_id}</div>
+                  <h2 class="grade-card-title ${colorClass.split(' ').find(cls => cls.startsWith('text-'))}">${grade.grade_name}</h2>
+                </div>
+                <p class="text-gray-700 text-base leading-relaxed mb-6 text-left">${description}</p>
+                <div class="w-full h-px bg-gray-200 my-2"></div>
+                <div class="space-y-3 text-base font-semibold text-gray-600 text-left">
+                  ${subjectsHtml}
+                </div>
+              </div>
+            `;
+            });
+          });
+      </script>
+      <footer class="footer">
+        <div class="container footer-container-wrapper">
+          <div class="row footer-container py-3">
+            <div class="col-md-3 col-sm-6 footer-section">
+              <div class="brand-section">
+                <h2 class="footer-logo">ITLS</h2>
+                <p class="footer-tagline mb-2">Interactive Teaching & Learning System</p>
+                <button class="join-btn" id="join-now-btn" onclick="showOverlay()"><i
+                    class="fas fa-user-plus me-2"></i>Join now</button>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6 footer-section">
+              <h3 class="footer-heading"><i class="fas fa-book-open me-2"></i>What we offer</h3>
+              <ul class="footer-links">
+                <li><i class="fas fa-calculator me-2"></i>Mathematics</li>
+                <li><i class="fas fa-language me-2"></i>English</li>
+                <li><i class="fas fa-flask me-2"></i>Science</li>
+                <li><i class="fas fa-globe-americas me-2"></i>Social Studies</li>
+              </ul>
+            </div>
+            <div class="col-md-3 col-sm-6 footer-section">
+              <h3 class="footer-heading"><i class="fas fa-info-circle me-2"></i>About</h3>
+              <ul class="footer-links" style="margin-top: 0.5rem">
+                <li><a href="contact-us.html"><i class="fas fa-envelope me-2"></i>Contact Us</a></li>
+                <li><a href="terms-of-service.html"><i class="fas fa-gavel me-2"></i>Terms of Service</a></li>
+                <li><a href="privacy-policy.html"><i class="fas fa-shield-alt me-2"></i>Privacy Policy</a></li>
+              </ul>
+            </div>
+            <div class="col-md-3 col-sm-6 footer-section">
+              <h3 class="footer-heading"><i class="fas fa-users me-2"></i>Connect Us</h3>
+              <div class="social-icons">
+                <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 text-center footer-bottom">
+            <p class="mb-0">&copy; 2023 ITLS. All rights reserved.</p>
+          </div>
+        </div>
+    </div>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+  <!-- MDB JavaScript for ripple effect -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.js"></script>
+  <script src="js/landingPage/script.js"></script>
+  <script>
+    // Initialize MDB Ripple effect
+    document.addEventListener('DOMContentLoaded', function () {
+      // Initialize ripple effect on buttons with data-mdb-ripple-init attribute
+      const rippleElements = document.querySelectorAll('[data-mdb-ripple-init]');
+      rippleElements.forEach(function (element) {
+        new mdb.Ripple(element);
+      });
+    });
+  </script>
+  <script>
+
+    // Dropdown user type selection logic
+    document.querySelectorAll('.dropdown-menu.tiny-dropdown a').forEach(item => {
+      item.addEventListener('click', function (e) {
+        e.preventDefault();
+        const selectedText = this.textContent.trim();
+        const userTypeBtn = document.querySelector('.user-type-btn');
+        if (userTypeBtn) {
+          userTypeBtn.textContent = selectedText;
+        }
+      });
+    });
+
+    // Reposition the whoami-menu dropdown on Bootstrap dropdown show event
+    const userTypeBtn = document.getElementById('languageDropdown');
+    const whoamiMenu = document.querySelector('.whoami-menu');
+    const whoamiDropdown = document.querySelector('.whoami-dropdown');
+    let originalParent = whoamiMenu.parentNode;
+    let originalNextSibling = whoamiMenu.nextSibling;
+
+    if (userTypeBtn && whoamiMenu && whoamiDropdown) {
+      let originalParent = whoamiMenu.parentNode;
+      let originalNextSibling = whoamiMenu.nextSibling;
+
+      userTypeBtn.addEventListener('show.bs.dropdown', () => {
+        // Move dropdown menu to body to avoid clipping and stacking context issues
+        document.body.appendChild(whoamiMenu);
+      });
+
+      userTypeBtn.addEventListener('shown.bs.dropdown', () => {
+        const rect = userTypeBtn.getBoundingClientRect();
+        whoamiMenu.style.position = 'fixed';
+        whoamiMenu.style.top = (rect.bottom) + 'px';
+        whoamiMenu.style.left = rect.left + 'px';
+        whoamiMenu.style.zIndex = '110000';
+      });
+
+      userTypeBtn.addEventListener('hide.bs.dropdown', () => {
+        // Move dropdown menu back to original container
+        if (originalNextSibling) {
+          originalParent.insertBefore(whoamiMenu, originalNextSibling);
+        } else {
+          originalParent.appendChild(whoamiMenu);
+        }
+        whoamiMenu.style.position = '';
+        whoamiMenu.style.top = '';
+        whoamiMenu.style.left = '';
+        whoamiMenu.style.zIndex = '';
+      });
+    }
+
+
+
+    // Initialize carousel with auto-sliding
+    document.addEventListener('DOMContentLoaded', function () {
+      var myCarousel = document.getElementById('carouselExampleDark');
+      var carousel = new bootstrap.Carousel(myCarousel, {
+        interval: 3000,
+        wrap: true,
+        ride: 'carousel'
+      });
+    });
+
+
+    // Forgot password modal functions
+    function openModal() {
+      document.getElementById('forgot-password-modal').style.display = 'block';
+    }
+
+    function closeModal() {
+      document.getElementById('forgot-password-modal').style.display = 'none';
+    }
+
+    // function sendResetLink() {
+    //   const email = document.getElementById('reset-email').value;
+    //   if (email) {
+    //     alert('Password reset link has been sent to ' + email);
+    //     closeModal();
+    //   } else {
+    //     alert('Please enter your email address');
+    //   }
+    // }
+
+    // ...existing code...
+    function sendResetLink() {
+      const email = document.getElementById('reset-email').value;
+      if (email) {
+        // Prepare the payload
+        const formData = { email: email };
+
+        // Use the actual backend endpoint
+        const apiUrl = 'http://localhost:8082/itls/forgot-password';
+
+        // Send POST request
+        fetch(apiUrl, {
+          method: 'POST',
+          headers: {
+            'accept': '*/*',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        })
+          .then(response => {
+            if (response.ok) {
+              alert('Password reset link has been sent to ' + email);
+              closeModal();
+            } else {
+              alert('Failed to send reset link. Please try again.');
+            }
+          })
+          .catch(error => {
+            alert('Error sending request: ' + error);
+          });
+      } else {
+        alert('Please enter your email address');
+      }
+    }
+    // ...existing code...
+
+    // Overlay functions
+    function showOverlay() {
+      const overlay = document.getElementById('overlay');
+      overlay.style.display = 'block';
+      overlay.style.pointerEvents = 'auto';
+    }
+
+    function hideOverlay() {
+      const overlay = document.getElementById('overlay');
+      overlay.style.display = 'none';
+      overlay.style.pointerEvents = 'none';
+    }
+
+    // Close overlay when clicking outside
+    document.getElementById('overlay').addEventListener('click', function (e) {
+      if (e.target === this) {
+        hideOverlay();
+      }
+    });
+
+    // Logout functionality
+    document.getElementById('logout-btn')?.addEventListener('click', function () {
+      localStorage.removeItem('loggedInUser');
+      window.location.reload();
+    });
+
+    document.getElementById('logout-dropdown-btn')?.addEventListener('click', function () {
+      localStorage.removeItem('loggedInUser');
+      window.location.reload();
+    });
+
+    // Check if user is logged in on page load
+    window.addEventListener('load', function () {
+      const loggedInUser = localStorage.getItem('loggedInUser');
+      if (loggedInUser) {
+        const user = JSON.parse(loggedInUser);
+        document.getElementById('login-form').style.display = 'none';
+        const welcomeContainer = document.getElementById('welcome-container');
+        if (welcomeContainer) welcomeContainer.style.display = 'flex';
+        // Set user initial to first valid letter (A-Z, a-z) from username or email, uppercase
+        let initial = '';
+        let source = (user.username && typeof user.username === 'string' && user.username.trim().length > 0)
+          ? user.username.trim()
+          : (user.email && typeof user.email === 'string' && user.email.trim().length > 0 ? user.email.trim() : '');
+        if (source) {
+          let match = source.match(/[A-Za-z]/);
+          if (match) initial = match[0].toUpperCase();
+        }
+        document.getElementById('userInitial').textContent = initial;
+        // Set the welcome message text
+        const welcomeEl = document.getElementById('typewriter-welcome');
+        if (welcomeEl) {
+          if (user.username) {
+            welcomeEl.innerHTML = `Welcome<br>${user.username}`;
+          } else {
+            welcomeEl.innerHTML = 'Welcome';
+          }
+        }
+        // Also update user profile dropdown initial and title attribute
+        const userDropdownBtn = document.getElementById('userDropdown');
+        if (userDropdownBtn) {
+          userDropdownBtn.title = `${user.username || user.email || ''} (${user.userType || ''})`;
+        }
+      }
+    });
+
+    // Overlay login button: focus login form, close overlay, and highlight login section
+    document.getElementById('overlay-login-btn').onclick = function (e) {
+      e.preventDefault();
+      document.getElementById('grade-login-overlay').style.display = 'none';
+      var loginForm = document.getElementById('login-form');
+      if (loginForm) {
+        loginForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        loginForm.classList.add('highlight-login');
+        document.getElementById('username').focus();
+        setTimeout(function () {
+          loginForm.classList.remove('highlight-login');
+        }, 1500);
+      }
+    }
+
+    // Sidebar grade button click handler (guaranteed to run after DOM is loaded)
+    document.querySelectorAll('.grade-btn[data-grade-id]').forEach(btn => {
+      btn.onclick = function () {
+        const gradeId = this.getAttribute('data-grade-id');
+        if (gradeId !== null) {
+          window.location.href = '/src/Home/secondPage.html?grade=' + gradeId;
+        }
+      };
+    });
+  </script>
+  <script>
+    console.log('Sidebar grade handler script loaded');
+    // Remove debug pointer-events CSS if present
+    const debugStyle = document.querySelector('style#debug-pointer-events');
+    if (debugStyle) debugStyle.remove();
+
+    // Remove all previous click handlers (if any)
+    document.querySelectorAll('.grade-btn[data-grade-id]').forEach(btn => {
+      btn.replaceWith(btn.cloneNode(true));
+    });
+
+    // Attach handler to render src/Home/index.html for the selected grade
+    console.log('Attaching sidebar grade button handler...');
+    document.querySelectorAll('.grade-btn[data-grade-id]').forEach(btn => {
+      btn.onclick = function () {
+        const gradeId = this.getAttribute('data-grade-id');
+        if (gradeId !== null) {
+          window.location.href = 'pages/home/home.html?grade=' + gradeId;
+        }
+      };
+    });
+  </script>
+  <script>
+    // Hide 'Join now' button if user is logged in
+    window.addEventListener('load', function () {
+      if (localStorage.getItem('loggedInUser')) {
+        var joinBtn = document.getElementById('join-now-btn');
+        if (joinBtn) joinBtn.style.display = 'none';
+      }
+
+      // Check if we need to open the membership overlay automatically
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('openMembership') === 'true') {
+        showOverlay(); // Automatically open the membership overlay
+      }
+    });
+  </script>
+</body>
+
+</html>

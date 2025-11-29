@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: url('../images/body2.avif') no-repeat center center; 
+            background-size: cover; 
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            width: 70%;
+            max-width: 1000px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Sidebar Section */
+        .sidebar {
+            width: 30%;
+            padding: 20px;
+            background: #f8f9fa;
+            text-align: center;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Profile Placeholder */
+        .profile-placeholder {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: #053361;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 40px;
+            font-weight: bold;
+            margin: 0 auto 10px;
+            text-transform: uppercase;
+        }
+
+        .sidebar p {
+            margin: 10px 0;
+            font-size: 14px;
+            color: #333;
+            text-align: center;
+        }
+
+        .sidebar a {
+            display: inline-block;
+            margin: 5px 0;
+            font-size: 14px;
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        .logout {
+            color: red;
+        }
+
+        .edit {
+            color: blue;
+        }
+
+        /* Main Content */
+        .content {
+            width: 70%;
+            padding-left: 20px;
+        }
+
+        .section {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h3 {
+            margin-bottom: 10px;
+            font-size: 16px;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 5px;
+        }
+
+        /* Performance Progress Bar Layout */
+        .performance-section {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 30px;
+        }
+
+        .subject-container {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .subject-row {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .progress-bar {
+            width: 70%;
+            background-color: #f3f3f3;
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+            margin-left: 10px;
+        }
+
+        .progress {
+            height: 15px;
+            background-color: #4caf50;
+            width: 0;
+            transition: width 0.5s;
+        }
+
+        .subject-name {
+            margin: 5px 0;
+            font-weight: bold;
+            width: 30%;
+        }
+
+        .plus-icon {
+            margin-left: auto;
+            padding: 0 10px;
+            transition: transform 0.3s;
+            color: #ffcc00;
+        }
+
+        .plus-icon.rotate {
+            transform: rotate(45deg);
+        }
+
+        /* Topic Table Styles */
+        .topic-table {
+            width: 100%;
+            margin-top: 10px;
+            border-collapse: collapse;
+            display: none;
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.3s ease-out, opacity 0.2s ease;
+            opacity: 0;
+        }
+
+        .topic-table.show {
+            display: table;
+            max-height: 1000px; /* Adjust based on your content */
+            opacity: 1;
+            transition: max-height 0.5s ease-in, opacity 0.3s ease 0.1s;
+        }
+
+        .topic-table th {
+            background-color: #007bff;
+            color: white;
+            padding: 8px 12px;
+            text-align: left;
+        }
+
+        .topic-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .topic-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .topic-table tr:hover {
+            background-color: #e6f2ff;
+        }
+
+        .topic-progress {
+            display: flex;
+            align-items: center;
+        }
+
+        .topic-progress-bar {
+            flex-grow: 1;
+            height: 15px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            margin-right: 10px;
+            overflow: hidden;
+        }
+
+        .topic-progress-fill {
+            height: 100%;
+            background-color: #eee000;
+            width: 0%;
+        }
+
+        .topic-progress-value {
+            min-width: 40px;
+            text-align: right;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="profile-placeholder" id="profilePlaceholder">S</div>
+            <p><strong>Student Name:</strong> <span id="sidebarStudentName"></span></p>
+            <p><strong>Grade:</strong> <span id="sidebarGrade"></span></p>
+            <p><strong>Guardian Name:</strong> <span id="sidebarGuardian"></span></p>
+
+            <a href="#" class="logout">Logout</a>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+            <div class="section">
+                <h3><i class="fas fa-chart-line"></i> Student Performance</h3>
+                <div class="performance-section">
+                    <!-- Math Section -->
+                    <div class="subject-container">
+                        <div class="subject-row" onclick="toggleSubject('math')">
+                            <span class="subject-name">Math</span>
+                            <div class="progress-bar">
+                                <div class="progress" id="mathProgress"></div>
+                            </div>
+                            <i class="fas fa-plus plus-icon" id="mathIcon"></i>
+                        </div>
+                        <table class="topic-table" id="mathTable">
+                            <thead>
+                                <tr>
+                                    <th>GRADE</th>
+                                    <th>TOTAL QUESTIONS</th>
+                                    <th>ATTEMPTED</th>
+                                    <th>COMPLETION PERCENTAGE</th>
+                                </tr>
+                            </thead>
+                            <tbody id="mathTopicsBody">
+                                <!-- Will be populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- English Section -->
+                    <div class="subject-container">
+                        <div class="subject-row" onclick="toggleSubject('english')">
+                            <span class="subject-name">English</span>
+                            <div class="progress-bar">
+                                <div class="progress" id="englishProgress"></div>
+                            </div>
+                            <i class="fas fa-plus plus-icon" id="englishIcon"></i>
+                        </div>
+                        <table class="topic-table" id="englishTable">
+                            <thead>
+                                <tr>
+                                    <th>GRADE</th>
+                                    <th>TOTAL QUESTIONS</th>
+                                    <th>ATTEMPTED</th>
+                                    <th>COMPLETION PERCENTAGE</th>
+                                </tr>
+                            </thead>
+                            <tbody id="englishTopicsBody">
+                                <!-- Will be populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Science Section -->
+                    <div class="subject-container">
+                        <div class="subject-row" onclick="toggleSubject('science')">
+                            <span class="subject-name">Science</span>
+                            <div class="progress-bar">
+                                <div class="progress" id="scienceProgress"></div>
+                            </div>
+                            <i class="fas fa-plus plus-icon" id="scienceIcon"></i>
+                        </div>
+                        <table class="topic-table" id="scienceTable">
+                            <thead>
+                                <tr>
+                                    <th>GRADE</th>
+                                    <th>TOTAL QUESTIONS</th>
+                                    <th>ATTEMPTED</th>
+                                    <th>COMPLETION PERCENTAGE</th>
+                                </tr>
+                            </thead>
+                            <tbody id="scienceTopicsBody">
+                                <!-- Will be populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- History Section -->
+                    <div class="subject-container">
+                        <div class="subject-row" onclick="toggleSubject('history')">
+                            <span class="subject-name">History</span>
+                            <div class="progress-bar">
+                                <div class="progress" id="historyProgress"></div>
+                            </div>
+                            <i class="fas fa-plus plus-icon" id="historyIcon"></i>
+                        </div>
+                        <table class="topic-table" id="historyTable">
+                            <thead>
+                                <tr>
+                                    <th>GRADE</th>
+                                    <th>TOTAL QUESTIONS</th>
+                                    <th>ATTEMPTED</th>
+                                    <th>COMPLETION PERCENTAGE</th>
+                                </tr>
+                            </thead>
+                            <tbody id="historyTopicsBody">
+                                <!-- Will be populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Geography Section -->
+                    <div class="subject-container">
+                        <div class="subject-row" onclick="toggleSubject('geography')">
+                            <span class="subject-name">Geography</span>
+                            <div class="progress-bar">
+                                <div class="progress" id="geographyProgress"></div>
+                            </div>
+                            <i class="fas fa-plus plus-icon" id="geographyIcon"></i>
+                        </div>
+                        <table class="topic-table" id="geographyTable">
+                            <thead>
+                                <tr>
+                                    <th>GRADE</th>
+                                    <th>TOTAL QUESTIONS</th>
+                                    <th>ATTEMPTED</th>
+                                    <th>COMPLETION PERCENTAGE</th>
+                                </tr>
+                            </thead>
+                            <tbody id="geographyTopicsBody">
+                                <!-- Will be populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to toggle subject expansion
+        function toggleSubject(subject) {
+            const allSubjects = ['math', 'english', 'science', 'history', 'geography'];
+            
+            // First close all other tables and reset their icons
+            allSubjects.forEach(sub => {
+                if (sub !== subject) {
+                    const otherTable = document.getElementById(`${sub}Table`);
+                    const otherIcon = document.getElementById(`${sub}Icon`);
+                    otherTable.classList.remove('show');
+                    otherIcon.classList.remove('rotate');
+                }
+            });
+            
+            // Then toggle the clicked subject
+            const table = document.getElementById(`${subject}Table`);
+            const icon = document.getElementById(`${subject}Icon`);
+            
+            if (!table.classList.contains('show')) {
+                table.classList.add('show');
+                icon.classList.add('rotate');
+            } else {
+                table.classList.remove('show');
+                icon.classList.remove('rotate');
+            }
+        }
+
+        // Function to update profile with default student if none specified
+        function updateProfile() {
+            // Default to first student if no URL parameter
+            const urlParams = new URLSearchParams(window.location.search);
+            let studentName = urlParams.get('id') || urlParams.get('student');
+            
+            // Fetch student data
+            fetch('students_final.json')
+                .then(response => response.json())
+                .then(data => {
+                    let student;
+                    
+                    if (studentName) {
+                        student = data.students.find(s => 
+                            s.name.toLowerCase() === decodeURIComponent(studentName).toLowerCase()
+                        );
+                    } else {
+                        // Default to first student
+                        student = data.students[0];
+                        studentName = student.name;
+                    }
+
+                    if (student) {
+                        const { grade, guardian, name } = student;
+                        document.getElementById("profilePlaceholder").textContent = name.charAt(0).toUpperCase();
+                        document.getElementById("sidebarStudentName").textContent = name;
+                        document.getElementById("sidebarGrade").textContent = grade;
+                        document.getElementById("sidebarGuardian").textContent = guardian;
+                        
+                        // Now fetch progress data with the confirmed student name
+                        fetch('progressData.json')
+                            .then(response => response.json())
+                            .then(progressData => {
+                                const studentProgress = progressData.students.find(s => 
+                                    s.name.toLowerCase() === name.toLowerCase()
+                                );
+                                
+                                if (studentProgress) {
+                                    const subjects = ['math', 'english', 'science', 'history', 'geography'];
+                                    
+                                    // Update progress bars and topic tables
+                                    subjects.forEach(subject => {
+                                        const progressElement = document.getElementById(`${subject}Progress`);
+                                        const topicsBody = document.getElementById(`${subject}TopicsBody`);
+                                        
+                                        if (studentProgress.subjects && studentProgress.subjects[subject]) {
+                                            // Calculate subject progress (average of all grades)
+                                            const grades = studentProgress.subjects[subject];
+                                            const totalPercentage = grades.reduce((sum, grade) => sum + grade.percentage, 0);
+                                            const avgPercentage = Math.round(totalPercentage / grades.length);
+                                            
+                                            // Update progress bar
+                                            progressElement.style.width = `${avgPercentage}%`;
+                                            progressElement.setAttribute('data-percent', avgPercentage);
+                                            
+                                            // Populate topic table
+                                            topicsBody.innerHTML = grades.map(grade => `
+                                                <tr>
+                                                    <td>${grade.grade}</td>
+                                                    <td>${grade.total}</td>
+                                                    <td>${grade.attempted}</td>
+                                                    <td>
+                                                        <div class="topic-progress">
+                                                            <div class="topic-progress-bar">
+                                                                <div class="topic-progress-fill" style="width: ${grade.percentage}%"></div>
+                                                            </div>
+                                                            <span class="topic-progress-value">${grade.percentage}%</span>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            `).join('');
+                                        }
+                                    });
+                                }
+                            })
+                            .catch(error => console.error('Error fetching progress data:', error));
+                    } else {
+                        console.error('Student not found');
+                    }
+                })
+                .catch(error => console.error('Error fetching student data:', error));
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            updateProfile();
+        });
+    </script>
+</body>
+</html>

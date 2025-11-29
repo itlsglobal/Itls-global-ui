@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Quiz</title>
+    <link id="dynamic-css" rel="stylesheet" href="../../css/pages/mcq.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="header"
+            style="display: flex; align-items: center; text-align: left; justify-content: flex-start; position: relative;">
+            <div class="home-icon-container"
+                style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%);">
+                <a href="javascript:void(0);" onclick="confirmExit()"
+                    style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background-color: #ffd000; color: #053361; text-decoration: none; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                    </svg>
+                </a>
+            </div>
+            <div style="display: inline-flex; align-items: center; margin: 0 auto;">
+                Hello <span id="username">USER</span>, Keep exploring <b>ITLS</b> for a brighter tomorrow!!
+            </div>
+        </div>
+        <div class="main">
+            <div class="content" style="position: relative;">
+                <h5 id="category">Grade – 1 Math – Addition & Subtraction</h5>
+                <div class="question-row"
+                    style="display: flex; align-items: center; min-height: 70px; gap: 12px; margin-left: 32px;">
+                    <img src="../../assets/images/question.png" alt="Question"
+                        style="height: 40px; width: 40px; object-fit: contain; flex-shrink: 0;" />
+                    <span id="question-number"
+                        style="font-size: 1.2rem; font-weight: 600; color: #555; margin-right: 8px;">Q1.</span>
+                    <span id="question-text"
+                        style="font-size: 1.3rem; font-weight: 500; font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;">Loading
+                        question...</span>
+                </div>
+                <div class="options" id="options">
+                    <!-- Options will be added dynamically -->
+                </div>
+                <div class="submit">
+                    <button onclick="submitAnswer()">Submit</button>
+                </div>
+                <div class="feedback-section" id="feedbackContainer"
+                    style="position: absolute; left: 0; right: 0; bottom: 0; min-height: 48px; display: flex; align-items: flex-start; background: #fff; z-index: 2; flex-direction: column; border-top: 3px solid #ffd000; border-radius: 8px 8px 0 0; overflow: hidden;">
+                    <div
+                        style="display: flex; align-items: center; width: 100%; padding: 12px 15px 8px; background: linear-gradient(to right, rgba(255,208,0,0.1), rgba(255,255,255,0.8), rgba(255,208,0,0.1));">
+                        <span id="hint-emoji" style="font-size: 1.5rem; margin-right: 10px;">💡</span>
+                        <span id="hint-text"
+                            style="font-size: 1rem; color: #053361; font-family: 'Segoe UI', Arial, sans-serif; font-weight: 500;">Tip:
+                            Read the question carefully!</span>
+                    </div>
+                    <div
+                        style="display: flex; align-items: center; width: 100%; padding: 8px 15px 12px; background-color: white;">
+                        <div id="feedback"
+                            style="font-size: 20px; font-weight: bold; flex: 1; min-height: 32px; display: flex; align-items: center;"
+                            aria-live="polite"></div>
+                        <img id="feedback-image" class="feedback-image"
+                            style="display:none; max-width: 100px; margin-left: 20px; min-height: 32px;"
+                            alt="Feedback image">
+                    </div>
+                </div>
+            </div>
+            <div class="sidebar">
+                <h3>Your Progress</h3>
+                <div
+                    style="text-align:center; font-size: 1.1rem; color: #444; margin-bottom: 12px; font-family: 'Segoe UI', Arial, sans-serif;">
+                    <span
+                        style="background: #f5f5f5; border-radius: 8px; padding: 4px 10px; display: inline-block; box-shadow: 0 1px 4px #0001;"></span>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 12px;">
+                    <div style="display: flex; flex-direction: column; align-items: center;">
+                        <div class="circle" id="progress"
+                            style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 90px; width: 90px; margin-bottom: 0;">
+                            <div
+                                style="font-size: 1.05rem; color: #ffe066; font-weight: 700; letter-spacing: 0.5px; text-shadow: 0 1px 2px #0002;">
+                                Attempt</div>
+                            <div
+                                style="font-size: 1.5rem; font-weight: bold; line-height: 1.2; color: #fff; text-shadow: 0 1px 2px #0008;">
+                                <span id="current-attempt">0</span>/<span id="total-questions">...</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; align-items: center;">
+                        <div class="circle" id="score"
+                            style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 90px; width: 90px;">
+                            <div
+                                style="font-size: 1.05rem; color: #7fffd4; font-weight: 700; letter-spacing: 0.5px; text-shadow: 0 1px 2px #0002;">
+                                Score</div>
+                            <div
+                                style="font-size: 1.5rem; font-weight: bold; line-height: 1.2; color: #fff; text-shadow: 0 1px 2px #0008;">
+                                <span id="current-score">0</span>/<span id="total-questions-2">...</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@3.6.2/dist/fetch.umd.js"></script>
+                    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8.2.0/dist/polyfill.min.js"></script>
+                    <script>
+                        // Function to show exit confirmation dialog
+                        function confirmExit() {
+                            // Create a modal dialog container
+                            const modalContainer = document.createElement('div');
+                            modalContainer.style.position = 'fixed';
+                            modalContainer.style.top = '0';
+                            modalContainer.style.left = '0';
+                            modalContainer.style.width = '100%';
+                            modalContainer.style.height = '100%';
+                            modalContainer.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+                            modalContainer.style.display = 'flex';
+                            modalContainer.style.justifyContent = 'center';
+                            modalContainer.style.alignItems = 'center';
+                            modalContainer.style.zIndex = '1000';
+
+                            // Create the modal content
+                            const modalContent = document.createElement('div');
+                            modalContent.style.backgroundColor = 'white';
+                            modalContent.style.padding = '30px';
+                            modalContent.style.borderRadius = '10px';
+                            modalContent.style.maxWidth = '400px';
+                            modalContent.style.textAlign = 'center';
+                            modalContent.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
+
+                            // Add warning message
+                            const warningMessage = document.createElement('h3');
+                            warningMessage.textContent = 'Are you sure you want to exit the test?';
+                            warningMessage.style.color = '#053361';
+                            warningMessage.style.marginBottom = '20px';
+
+                            // Create buttons container
+                            const buttonsContainer = document.createElement('div');
+                            buttonsContainer.style.display = 'flex';
+                            buttonsContainer.style.justifyContent = 'center';
+                            buttonsContainer.style.gap = '15px';
+
+                            // Yes button
+                            const yesButton = document.createElement('button');
+                            yesButton.textContent = 'Yes, Exit';
+                            yesButton.style.padding = '10px 20px';
+                            yesButton.style.backgroundColor = '#ffd000';
+                            yesButton.style.color = '#053361';
+                            yesButton.style.border = 'none';
+                            yesButton.style.borderRadius = '5px';
+                            yesButton.style.cursor = 'pointer';
+                            yesButton.style.fontWeight = 'bold';
+                            yesButton.onclick = function () {
+                                window.location.href = '../../src/Home/index.html';
+                            };
+
+                            // No button
+                            const noButton = document.createElement('button');
+                            noButton.textContent = 'No, Continue';
+                            noButton.style.padding = '10px 20px';
+                            noButton.style.backgroundColor = '#053361';
+                            noButton.style.color = 'white';
+                            noButton.style.border = 'none';
+                            noButton.style.borderRadius = '5px';
+                            noButton.style.cursor = 'pointer';
+                            noButton.style.fontWeight = 'bold';
+                            noButton.onclick = function () {
+                                document.body.removeChild(modalContainer);
+                            };
+
+                            // Assemble the modal
+                            buttonsContainer.appendChild(yesButton);
+                            buttonsContainer.appendChild(noButton);
+                            modalContent.appendChild(warningMessage);
+                            modalContent.appendChild(buttonsContainer);
+                            modalContainer.appendChild(modalContent);
+
+                            // Add to the body
+                            document.body.appendChild(modalContainer);
+                        }
+
+                        let questions = [];
+                        let currentQuestionIndex = 0;
+                        let selectedAnswer = null;
+                        let score = 0;
+
+                        function loadQuestions() {
+                            try {
+                                fetch("../../data/questions/questionsData.json")
+                                    .then(response => {
+                                        if (!response.ok) {
+                                            throw new Error(`HTTP error! status: ${response.status}`);
+                                        }
+                                        return response.json();
+                                    })
+                                    .then(data => {
+                                        // Flatten all questions from all grades/subjects/skills into a single array
+                                        questions = [];
+                                        data.questions.forEach(group => {
+                                            if (Array.isArray(group.questions)) {
+                                                group.questions.forEach(q => {
+                                                    // Attach grade/subject/skill context if needed
+                                                    questions.push({
+                                                        ...q,
+                                                        grade_id: group.grade_id,
+                                                        subject_id: group.subject_id,
+                                                        subject_name: group.subject_name,
+                                                        skill_category_id: group.skill_category_id,
+                                                        skill: group.skill
+                                                    });
+                                                });
+                                            }
+                                        });
+                                        // Update total questions in UI
+                                        document.getElementById('total-questions').textContent = questions.length;
+                                        document.getElementById('total-questions-2').textContent = questions.length;
+                                        document.getElementById('current-attempt').textContent = 0;
+                                        document.getElementById('current-score').textContent = 0;
+                                        loadQuestion();
+                                    })
+                                    .catch(error => {
+                                        console.error("Error loading questions:", error);
+                                        document.getElementById('question-number').textContent = '';
+                                        document.getElementById('question-text').textContent = "Failed to load questions. Please check the console for details.";
+                                    });
+                            } catch (error) {
+                                console.error("Error loading questions:", error);
+                                document.getElementById('question-number').textContent = '';
+                                document.getElementById('question-text').textContent = "Failed to load questions. Please check the console for details.";
+                            }
+                        }
+
+                        function loadQuestion() {
+                            try {
+                                document.getElementById('question-number').textContent = `Q${currentQuestionIndex + 1}.`;
+                                document.getElementById('question-text').textContent = "Loading question...";
+                                document.getElementById('options').innerHTML = "";
+                                // Show hint at the start of each question
+                                document.getElementById('hint-emoji').style.display = '';
+                                document.getElementById('hint-text').style.display = '';
+
+                                if (!Array.isArray(questions) || questions.length === 0) {
+                                    throw new Error("No questions available");
+                                }
+
+                                if (currentQuestionIndex < 0 || currentQuestionIndex >= questions.length) {
+                                    throw new Error("Invalid question index");
+                                }
+
+                                const currentQuestion = questions[currentQuestionIndex];
+
+                                if (!currentQuestion ||
+                                    typeof currentQuestion !== 'object' ||
+                                    !currentQuestion.text ||
+                                    !Array.isArray(currentQuestion.answers) ||
+                                    currentQuestion.answers.length === 0 ||
+                                    currentQuestion.question_type === undefined) {
+                                    throw new Error("Invalid question format");
+                                }
+
+                                document.getElementById('question-text').textContent = currentQuestion.text;
+
+                                const optionsContainer = document.getElementById('options');
+                                if (!optionsContainer) {
+                                    throw new Error("Options container not found");
+                                }
+
+                                optionsContainer.innerHTML = "";
+
+                                // Set CSS based on question type
+                                switch (currentQuestion.question_type) {
+                                    case 1: // MCQ
+                                        document.getElementById('dynamic-css').setAttribute('href', '../../css/pages/mcq.css');
+                                        break;
+                                    case 2: // Yes/No
+                                        document.getElementById('dynamic-css').setAttribute('href', '../../css/pages/yesnomcq.css');
+                                        break;
+                                    case 3: // Radio buttons
+                                        document.getElementById('dynamic-css').setAttribute('href', '../../css/pages/radiobuttons.css');
+                                        break;
+                                    case 4: // Text Box
+                                        document.getElementById('dynamic-css').setAttribute('href', '../../css/pages/fillintheblank.css');
+                                        break;
+                                    case 5: // Check Box
+                                        document.getElementById('dynamic-css').setAttribute('href', '../../css/pages/checkbox.css');
+                                        break;
+                                }
+
+                                // Load question options based on type
+                                switch (currentQuestion.question_type) {
+                                    case 1: // MCQ
+                                    case 2: // Yes/No
+                                        currentQuestion.answers.forEach((answer, index) => {
+                                            const button = document.createElement("button");
+                                            button.onclick = (event) => selectAnswer(answer.id); // Pass event explicitly
+                                            button.textContent = answer.text;
+                                            button.setAttribute('aria-label', `Option ${index + 1}: ${answer.text}`);
+                                            if (currentQuestion.question_type === 2) { // Yes/No type
+                                                optionsContainer.classList.add('yesno-options');
+                                            }
+                                            optionsContainer.appendChild(button);
+                                        });
+                                        break;
+                                    case 3: // Radio buttons
+                                        currentQuestion.answers.forEach((answer, index) => {
+                                            const label = document.createElement("label");
+                                            const radio = document.createElement("input");
+                                            radio.type = "radio";
+                                            radio.name = "radio-option";
+                                            radio.value = answer.id;
+                                            radio.onclick = (event) => selectAnswer(answer.id); // Pass event explicitly
+                                            label.appendChild(radio);
+                                            label.appendChild(document.createTextNode(answer.text));
+                                            optionsContainer.classList.add('radio-options');
+                                            optionsContainer.appendChild(label);
+                                        });
+                                        break;
+                                    case 4: // Text Box
+                                        const input = document.createElement("input");
+                                        input.type = "text";
+                                        input.placeholder = "";
+                                        input.style.width = "120px";
+                                        input.style.height = "30px";
+                                        input.style.padding = "3px";
+                                        input.style.fontSize = "18px";
+                                        input.oninput = (e) => selectAnswer(e.target.value);
+                                        optionsContainer.appendChild(input);
+                                        break;
+                                    case 5: // Check Box
+                                        currentQuestion.answers.forEach((answer, index) => {
+                                            const label = document.createElement("label");
+                                            const checkbox = document.createElement("input");
+                                            checkbox.type = "checkbox";
+                                            checkbox.value = answer.id;
+                                            checkbox.onchange = (event) => selectAnswer(answer.id); // Pass event explicitly
+                                            label.appendChild(checkbox);
+                                            label.appendChild(document.createTextNode(answer.text));
+                                            optionsContainer.appendChild(label);
+                                        });
+                                        break;
+                                }
+
+                                // Set hint/emoji based on question type
+                                const current = questions[currentQuestionIndex];
+                                const hintEmoji = document.getElementById('hint-emoji');
+                                const hintText = document.getElementById('hint-text');
+                                switch (current.question_type) {
+                                    case 1:
+                                        hintEmoji.textContent = '📝';
+                                        if (current.answers && current.answers.length === 2) {
+                                            hintText.textContent = 'Choose one of the two options.';
+                                        } else {
+                                            hintText.textContent = 'Choose the best answer.';
+                                        }
+                                        break;
+                                    case 2:
+                                        hintEmoji.textContent = '👍';
+                                        if (current.answers && current.answers.length === 2) {
+                                            hintText.textContent = 'Choose one of the two options.';
+                                        } else {
+                                            hintText.textContent = 'Pick the correct option.';
+                                        }
+                                        break;
+                                    case 3:
+                                        hintEmoji.textContent = '🔘';
+                                        hintText.textContent = 'Select one option.';
+                                        break;
+                                    case 4:
+                                        hintEmoji.textContent = '✍️';
+                                        hintText.textContent = 'Type your answer.';
+                                        break;
+                                    case 5:
+                                        hintEmoji.textContent = '☑️';
+                                        hintText.textContent = 'Select all that apply.';
+                                        break;
+                                    default:
+                                        hintEmoji.textContent = '💡';
+                                        hintText.textContent = 'Read the question carefully!';
+                                }
+
+                            } catch (error) {
+                                console.error("Error loading question:", error);
+                                document.getElementById('question-number').textContent = '';
+                                document.getElementById('question-text').textContent = "Error loading question. Please check the console.";
+                            }
+                        }
+
+                        function selectAnswer(answer) {
+                            selectedAnswer = answer;
+                            document.querySelectorAll(".options button, .options input[type='radio']").forEach(element => {
+                                if (element.tagName === 'BUTTON') {
+                                    element.style.backgroundColor = "";
+                                    element.style.color = "";
+                                } else if (element.type === 'radio') {
+                                    element.parentElement.style.backgroundColor = "";
+                                    element.parentElement.style.color = "";
+                                }
+                            });
+
+                            if (event.target.tagName === 'BUTTON') {
+                                event.target.style.backgroundColor = "#FFFF00";
+                                event.target.style.color = "black";
+                            } else if (event.target.type === 'radio') {
+                                event.target.parentElement.style.color = "black";
+                            }
+                        }
+
+                        function submitAnswer() {
+                            const feedback = document.getElementById('feedback');
+                            const feedbackImage = document.getElementById('feedback-image');
+                            // Hide hint when feedback is shown
+                            document.getElementById('hint-emoji').style.display = 'none';
+                            document.getElementById('hint-text').style.display = 'none';
+
+                            if (selectedAnswer === null) {
+                                feedback.textContent = "Please select an answer.";
+                                feedback.style.color = "orange";
+                                feedbackImage.style.display = "none";
+                                feedback.classList.add('fade');
+                                return;
+                            }
+
+                            const correctAnswer = questions[currentQuestionIndex].answers.find(a => a.is_correct);
+                            let isCorrect = false;
+                            if (questions[currentQuestionIndex].question_type === 5) {
+                                isCorrect = selectedAnswer === correctAnswer.id;
+                            } else if (questions[currentQuestionIndex].question_type === 4) {
+                                isCorrect = selectedAnswer.trim().toLowerCase() === correctAnswer.text.trim().toLowerCase();
+                            } else {
+                                isCorrect = selectedAnswer === correctAnswer.id;
+                            }
+
+                            const selectedAnswerText = questions[currentQuestionIndex].answers
+                                .find(a => a.id === selectedAnswer)?.text || selectedAnswer;
+                            const correctAnswerText = questions[currentQuestionIndex].answers
+                                .find(a => a.is_correct)?.text || correctAnswer;
+
+                            if (isCorrect) {
+                                score++;
+                                feedback.innerHTML = `<strong>Great job!</strong> Correct answer: ${correctAnswerText}`;
+                                feedback.style.color = "green";
+                                feedbackImage.src = "../../assets/images/right.png";
+                                // Update score display only, not the whole circle
+                                document.getElementById('current-score').textContent = score;
+                                document.getElementById('total-questions-2').textContent = questions.length;
+                                feedbackImage.classList.remove('wrong');
+                                feedbackImage.classList.add('correct');
+                            } else {
+                                feedback.innerHTML = `<strong>Oops!</strong> You selected: ${selectedAnswerText}. Correct answer: ${correctAnswerText}`;
+                                feedback.style.color = "red";
+                                feedbackImage.src = "../../assets/images/wrong.png";
+                                feedbackImage.classList.remove('correct');
+                                feedbackImage.classList.add('wrong');
+                            }
+
+                            feedbackImage.style.display = "block";
+                            feedback.classList.add('fade');
+                            updateProgress();
+
+                            setTimeout(() => {
+                                document.getElementById('feedbackContainer').style.display = "flex";
+                                document.getElementById('feedback').textContent = "";
+                                document.getElementById('feedback-image').style.display = "none";
+                                // Show hint again for next question
+                                document.getElementById('hint-emoji').style.display = '';
+                                document.getElementById('hint-text').style.display = '';
+                                if (currentQuestionIndex < questions.length - 1) {
+                                    currentQuestionIndex++;
+                                    selectedAnswer = null;
+                                    document.querySelectorAll(".options button").forEach(btn => {
+                                        btn.style.backgroundColor = "";
+                                        btn.style.color = "";
+                                    });
+                                    loadQuestion();
+                                } else {
+                                    window.location.href = `results.html?attempted=${questions.length}&score=${score}`;
+                                }
+                            }, 2000);
+                        }
+
+                        function updateProgress() {
+                            document.getElementById('current-attempt').textContent = currentQuestionIndex + 1;
+                            document.getElementById('current-score').textContent = score;
+                        }
+
+                        loadQuestions();
+                    </script>
+</body>
+
+</html>

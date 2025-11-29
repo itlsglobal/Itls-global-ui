@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCQ</title>
+    <link rel="stylesheet" href="../css/pages/mcq.css">
+
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            Hello <span id="username">USER</span>, Keep exploring <b>ITLS</b> for a brighter tomorrow!!
+        </div>
+        <div class="main">
+            <div class="content">
+                <h5>Grade – 1 Math – Addition & Subtraction</h5>
+<h2 id="question">
+    <img src="images/question.png" alt="Logo" style="height: 50px; width: auto; margin-right: 10px; vertical-align: middle;">
+</h2>
+
+<div class="options" id="options">
+    <!-- Buttons will be added dynamically here -->
+</div>
+                <div class="submit">
+                    <button onclick="submitAnswer()">Submit</button>
+                </div>
+                <div class="feedback-section">
+                    <div id="feedback" style="margin-top: 10px; font-size: 18px;" aria-live="polite"></div>
+                    <img id="feedback-image" class="feedback-image" style="display:none;" alt="Feedback image">
+                </div>
+            </div>
+            <div class="sidebar">
+                <h3>Your Progress</h3>
+                <div class="circle" id="progress">0/10</div>
+                <div class="circle" id="score">Score<br>0/10</div>
+                <img alt="Cartoon character with a happy expression, wearing a colorful outfit and standing in a playful pose" height="300" src="https://storage.googleapis.com/a1aa/image/qhKsjkeq3SQjHyu3HF2aS9cEjmGyo9QFkaQTQRp3YONrwWEKA.jpg" width="300"/>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const username = "John Doe";
+        document.getElementById('username').textContent = username;
+
+        let questions = [];
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let selectedAnswer = null;
+
+        async function loadQuestions() {
+            try {
+                const response = await fetch('questions.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+                questions = data.questions.filter(q => q.question_type === 1);
+                loadQuestion();
+            } catch (error) {
+                console.error('Error loading questions:', error);
+                document.getElementById('question').textContent = "Failed to load questions. Please check the console for details.";
+            }
+        }
+
+
+        function loadQuestion() {
+            if (questions.length === 0) return;
+            const currentQuestion = questions[currentQuestionIndex];
+
+            document.getElementById('question').textContent = currentQuestion.text;
+            const optionsContainer = document.getElementById('options');
+            optionsContainer.innerHTML = '';
+            
+            currentQuestion.answers.forEach((answer, index) => {
+                const button = document.createElement('button');
+                button.textContent = answer.text;
+                button.onclick = () => selectAnswer(answer.id);
+                button.setAttribute('aria-label', `Option ${index + 1}: ${answer.text}`);
+                optionsContainer.appendChild(button);
+            });
+
+        }
+
+        function selectAnswer(answer) {
+        debugger;
+        selectedAnswer = answer;
+        document.querySelectorAll(".options button").forEach((button) => {
+          button.style.backgroundColor = ""; // Reset background color
+          button.style.color = ""; // Reset text color
+          button.style.border = ""; // Reset border
+        });
+        const target = event.target; // Get the clicked button
+        target.style.backgroundColor = "#FFFF00"; // Set selected color
+        target.style.color = "white"; // Set text color for selected option
+        target.style.border = "3px solid #ffcc00"; // Border color when selected
+      }
+
+
+        function submitAnswer() {
+            const feedback = document.getElementById('feedback');
+            const feedbackImage = document.getElementById('feedback-image');
+            feedback.classList.remove('fade');
+
+            if (selectedAnswer === null) {
+                feedback.textContent = "Please select an answer before submitting.";
+                feedback.style.color = "orange";
+                feedbackImage.style.display = "none";
+                feedback.classList.add('fade');
+                return;
+            }
+
+            const correctAnswer = questions[currentQuestionIndex].answers.find(a => a.is_correct);
+            
+            if (selectedAnswer === correctAnswer.id) {
+
+                score++;
+                feedback.innerHTML = `<strong>Great job!</strong> You got it right: ${selectedAnswer}`;
+                feedback.style.color = "green";
+                feedbackImage.src = "images/Untitled design.png";
+            } else {
+                feedback.innerHTML = `<strong>Oops!</strong> You selected: ${selectedAnswer}. Correct answer: ${correctAnswer}`;
+                feedback.style.color = "red";
+                feedbackImage.src = "images/pngegg (1).png";
+            }
+
+            feedbackImage.style.display = "block";
+            feedback.classList.add('fade');
+            updateProgress();
+
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                setTimeout(loadQuestion, 1500);
+            } else {
+                feedback.textContent = `Test Completed! Final Score: ${score}/${questions.length}`;
+            }
+        }
+
+
+        function updateProgress() {
+            document.getElementById('progress').textContent = `${currentQuestionIndex + 1}/10`;
+            document.getElementById('score').innerHTML = `Score<br>${score}/10`;
+        }
+
+        loadQuestions();
+
+    </script>
+</body>
+</html>

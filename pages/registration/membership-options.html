@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Membership Options</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #004F6E;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .container {
+            background-color: #004F6E;
+            padding: 20px;
+            border-radius: 20px;
+            width: 80%;
+            max-width: 900px;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .header,
+        .footer {
+            background-color: #FDC400;
+            padding: 10px;
+            border-radius: 10px;
+            font-weight: bold;
+            color: #003366;
+        }
+
+        .membership-options {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .membership {
+            background-color: #004F6E;
+            border: 2px solid #FDC400;
+            padding: 20px;
+            border-radius: 10px;
+            width: 30%;
+            margin: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .membership:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .membership h3 {
+            margin: 0 0 10px 0;
+        }
+
+        .membership ul {
+            list-style: disc;
+            padding-left: 20px;
+            text-align: left;
+        }
+
+        .footer {
+            margin-top: 20px;
+        }
+
+        /* Popup Overlay Styles */
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+        }
+
+        .popup-content {
+            position: relative;
+            width: 85%;
+            height: 96%;
+            margin: .8% auto;
+            background-color: #004F6E;
+            border: 3px solid #FDC400;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 28px;
+            color: #FDC400;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .close-btn:hover {
+            color: white;
+        }
+
+        .popup-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Custom Confirmation Dialog */
+        #confirmation-dialog {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .confirm-box {
+            background-color: #004F6E;
+            border: 3px solid #FDC400;
+            border-radius: 10px;
+            padding: 25px;
+            width: 350px;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+        }
+
+        .confirm-message {
+            color: white;
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+        .confirm-buttons {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .confirm-btn {
+            padding: 10px 25px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.2s ease;
+        }
+
+        .yes-btn {
+            background-color: #FDC400;
+            color: #003366;
+        }
+
+        .no-btn {
+            background-color: #003366;
+            color: #FDC400;
+        }
+
+        .confirm-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Close button for membership page */
+        .close-membership-btn {
+            position: absolute;
+            top: -40px;
+            right: -20px;
+            background-color: #FDC400;
+            color: #003366;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 16px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .close-membership-btn:before {
+            content: "×";
+            font-size: 18px;
+            margin-right: 5px;
+        }
+
+        .close-membership-btn:hover {
+            background-color: #e9b500;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <button class="close-membership-btn" onclick="closeMembershipPage()">Close</button>
+        <div class="header">Sign up, Set up your account.. Keep exploring for a bright future</div>
+        <div class="membership-options">
+            <div class="membership" onclick="showPopup('individual-registration.html')">
+                <h3>Join as Individual</h3>
+                <p>(Single Member)</p>
+                <ul>
+                    <li>Full Access to 24*7</li>
+                    <li>Access from Mobile/Tablet & Computer</li>
+                </ul>
+            </div>
+            <div class="membership" onclick="showPopup('family-registration.html')">
+                <h3>Join as Family</h3>
+                <p>(Up to 6 members)</p>
+                <ul>
+                    <li>Full Access to 24*7</li>
+                    <li>Access from Mobile/Tablet & Computer</li>
+                </ul>
+            </div>
+            <div class="membership" onclick="showPopup('teacher-registration.html')">
+                <h3>Join as Teacher</h3>
+                <p>(25 Members)</p>
+                <ul>
+                    <li>Full Access to 24*7</li>
+                    <li>Access from Mobile/Tablet & Computer</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer">Core Subject - Math/English/Science/Worksheets &nbsp; | &nbsp; Grade – 1 to Grade 5</div>
+    </div>
+
+    <!-- Popup Overlay -->
+    <div id="popup-overlay" class="popup-overlay">
+        <div class="popup-content">
+            <span class="close-btn" onclick="showConfirmation()">&times;</span>
+            <iframe id="popup-iframe" class="popup-iframe" src=""></iframe>
+        </div>
+    </div>
+
+    <!-- Custom Confirmation Dialog -->
+    <div id="confirmation-dialog">
+        <div class="confirm-box">
+            <div class="confirm-message">Are you sure you want to close this registration form?</div>
+            <div class="confirm-buttons">
+                <button class="confirm-btn yes-btn" onclick="confirmClose(true)">Yes</button>
+                <button class="confirm-btn no-btn" onclick="confirmClose(false)">No</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showPopup(url) {
+            // Files are in the same directory, no path modification needed
+            document.getElementById('popup-iframe').src = url;
+            document.getElementById('popup-overlay').style.display = 'block';
+
+            // Debug information to console
+            console.log("Opening registration page: " + url);
+        }
+
+        function showConfirmation() {
+            // Show the custom confirmation dialog
+            document.getElementById('confirmation-dialog').style.display = 'flex';
+        }
+
+        function confirmClose(confirmed) {
+            // Hide the confirmation dialog
+            document.getElementById('confirmation-dialog').style.display = 'none';
+
+            // If user confirmed, close the popup
+            if (confirmed) {
+                document.getElementById('popup-overlay').style.display = 'none';
+                document.getElementById('popup-iframe').src = '';
+                console.log("Popup closed and iframe source cleared");
+            }
+        }
+
+        // Function to close the membership page
+        function closeMembershipPage() {
+            // If we're in an iframe in a parent window
+            if (window.parent && window.parent !== window) {
+                // Use postMessage to communicate with the parent window
+                window.parent.postMessage('close-membership-overlay', '*');
+                console.log("Sent close message to parent window");
+
+                // Alternative approach - directly access parent's DOM if same origin
+                try {
+                    // Try to set the display style of the parent's overlay element
+                    var parentOverlay = window.parent.document.getElementById('overlay');
+                    if (parentOverlay) {
+                        parentOverlay.style.display = 'none';
+                        console.log("Closed parent overlay directly");
+                    }
+                } catch (e) {
+                    console.log("Couldn't directly access parent DOM: " + e.message);
+                }
+            }
+        }
+
+        // Check if the registration pages exist and log their status
+        window.onload = function () {
+            // Array of registration pages to check
+            const pages = ['family-registration.html', 'individual-registration.html', 'teacher-registration.html'];
+
+            pages.forEach(page => {
+                // Create a test image with the page URL
+                const img = new Image();
+                img.onload = function () {
+                    console.log(`✓ Registration page exists: ${page}`);
+                };
+                img.onerror = function () {
+                    console.warn(`✗ Registration page not found: ${page}. Trying with Registration/ prefix...`);
+                    // Try with Registration/ prefix
+                    const img2 = new Image();
+                    img2.onload = function () {
+                        console.log(`✓ Registration page exists at: Registration/${page}`);
+                    };
+                    img2.onerror = function () {
+                        console.error(`✗ Registration page not found at either location: ${page}`);
+                    };
+                    img2.src = `Registration/${page}`;
+                };
+                img.src = page;
+            });
+        };
+    </script>
+</body>
+
+</html>
