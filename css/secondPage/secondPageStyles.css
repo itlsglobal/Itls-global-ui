@@ -1218,7 +1218,7 @@ button[type="submit"] i {
 
 /* Header section styles from indexs.html */
 .header-section {
-    background: #053361 !important;
+    background: #ffffff !important;
     color: #053361 !important;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
@@ -1349,4 +1349,10 @@ button[type="submit"] i {
 .col-sm-8,
 .col-sm-12 {
     overflow: visible !important;
+}
+.forgot-password .fas{
+    color: #FFD000 !important;
+}
+.forgot-password{
+    color: black !important;
 }

@@ -2057,7 +2057,7 @@ h1 {
 /* Beautified Header CSS */
 .header-section {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-    background: linear-gradient(to right, #053361, #053361);
+    background: white;
     border-bottom: 3px solid #f0f2f5;
     position: relative;
     z-index: 10;
@@ -2198,7 +2198,7 @@ h1 {
 
 .forgot-password {
     font-size: 12px;
-    color: #ffffff !important;
+    color: #050c17 !important;
     text-decoration: none;
     transition: all 0.3s ease;
     display: inline-flex;
