@@ -152,7 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
       skillCategoryDiv.innerHTML = `
         <h2 class="${skillCategory.skill_category.toLowerCase().replace(/\s+/g, '-')}">
           <img
-            src="images/4.png"
+            src="/assets/images/4.png"
             alt="${skillCategory.skill_category} Icon"
             style="
               width: 50px;

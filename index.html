@@ -50,8 +50,10 @@
           <div class="row p-0">
             <div class="col-12 col-sm-4">
               <div class="d-flex align-items-center justify-content-center justify-content-md-start">
-                <img class="logo" style="height: 80px; width: auto; margin-top: -1px;"
-                  src="./assets/images/LOGOITLS.png" alt="ITLS Logo">
+                <a href="/index.html">
+                  <img class="logo" style="height: 80px; width: auto; margin-top: -1px;"
+                    src="./assets/images/LOGOITLS.png" alt="ITLS Logo">
+                </a>
               </div>
             </div>
 
@@ -91,7 +93,7 @@
                   <div class="button-container"
                     style="margin-top: 0px; margin-right: -30px; display: flex; align-items: center; flex-direction: row; flex-wrap: nowrap; gap: 5px;">
                     <button type="button" class="btn btn-primary" data-mdb-ripple-init id="login-btn"><i
-                        class="fas fa-sign-in-alt me-1"></i> Log in
+                        class="fas fa-sign-in-alt me-1"></i> Log In
                     </button>
                     <button type="button" class="btn btn-secondary" data-mdb-ripple-init onclick="showOverlay()">
                       <i class="fas fa-user-plus me-1"></i> Sign Up
@@ -711,7 +713,7 @@
       btn.onclick = function () {
         const gradeId = this.getAttribute('data-grade-id');
         if (gradeId !== null) {
-          window.location.href = 'pages/home/home.html?grade=' + gradeId;
+          window.location.href = 'pages/home/secondPage.html?grade=' + gradeId;
         }
       };
     });
