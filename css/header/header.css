@@ -1,0 +1,453 @@
+/* ========================================
+   UNIFIED HEADER STYLES FOR ALL PAGES
+   ======================================== */
+
+/* Ensure consistent positioning across all pages */
+html,
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.page-wrapper {
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 100vh !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.main-content {
+  flex: 1 0 auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Header section styles */
+.header-section {
+  background: #ffffff !important;
+  color: #053361 !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+  min-height: 90px !important;
+  padding: 5px 0 0 0 !important;
+  margin-bottom: 0px !important;
+  margin-top: 0px !important;
+  max-height: 90px !important;
+  overflow: hidden !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+}
+
+/* Logo styling - override all inline styles */
+.logo {
+  height: 80px !important;
+  width: auto !important;
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  display: block;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+/* Welcome container - should not interfere with layout */
+.welcome-container {
+  display: none !important;
+  height: 0 !important;
+  width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Container and layout */
+.container-fluid {
+  display: flex !important;
+  align-items: center !important;
+  height: 90px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Row styling */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  height: 100%;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100%;
+}
+
+/* Column styling */
+.col-12,
+.col-sm-4,
+.col-sm-8 {
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+@media (min-width: 576px) {
+  .col-sm-4 {
+    width: 33.333333%;
+  }
+
+  .col-sm-8 {
+    width: 66.666667%;
+  }
+
+  .col-sm-12 {
+    width: 100%;
+  }
+}
+
+/* Flexbox utilities */
+.d-flex {
+  display: flex !important;
+  align-items: center !important;
+  height: 100% !important;
+}
+
+.align-items-center {
+  align-items: center !important;
+}
+
+.justify-content-center {
+  justify-content: center !important;
+}
+
+.justify-content-md-start {
+  justify-content: flex-start !important;
+}
+
+.justify-content-between {
+  justify-content: space-between !important;
+}
+
+/* Header message */
+#header-message {
+  display: none;
+}
+
+#header-message.d-none {
+  display: none !important;
+}
+
+#header-message.d-md-block {
+  display: block !important;
+}
+
+.welcome-message {
+  font-size: 2rem !important;
+  color: #053361 !important;
+  margin-bottom: 0 !important;
+  display: inline-block;
+  font-weight: 900 !important;
+  letter-spacing: 0.05em;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+  text-align: left;
+  padding-top: 8px;
+  text-shadow: 0 0 10px #FFD000, 0 0 20px #FFD000;
+  animation: pulseColor 3s infinite;
+}
+
+@keyframes pulseColor {
+  0%, 100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* Welcome container */
+.welcome-container {
+  display: none;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* User profile dropdown */
+.user-profile-dropdown {
+  position: relative !important;
+  z-index: 120000 !important;
+  overflow: visible !important;
+  display: none;
+}
+
+.user-menu-btn {
+  border-radius: 50% !important;
+  width: 45px;
+  height: 45px;
+  padding: 0;
+  background: radial-gradient(circle, #0a4a94, #053361);
+  color: white;
+  box-shadow: 0 4px 15px rgba(5, 51, 97, 0.2);
+  border: 2px solid white !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+}
+
+.user-menu-btn::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.user-menu-btn:hover::before,
+.user-menu-btn:focus::before {
+  opacity: 1;
+}
+
+.user-menu-btn:hover,
+.user-menu-btn:focus {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(5, 51, 97, 0.3);
+}
+
+.user-avatar {
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+  position: absolute !important;
+  right: 0 !important;
+  left: auto !important;
+  top: 90% !important;
+  margin-top: -36px !important;
+  padding-top: 0 !important;
+  z-index: 130000 !important;
+  min-width: 180px !important;
+  overflow: visible !important;
+  display: block;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.2s;
+  border: none;
+  border-radius: 20px !important;
+  padding: 0.5rem 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
+}
+
+.dropdown-menu.show,
+.user-profile-dropdown.show .dropdown-menu {
+  visibility: visible;
+  opacity: 1;
+  display: block;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  padding: 0.8rem 1.5rem;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  color: #495057;
+  border-radius: 30px !important;
+  margin: 5px 0.7rem;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.dropdown-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: linear-gradient(to right, rgba(240, 240, 240, 0), rgba(240, 240, 240, 0.7));
+  transform: translateX(-100%);
+  transition: transform 0.4s ease;
+  z-index: -1;
+  border-radius: 30px;
+}
+
+.dropdown-item:hover::before {
+  transform: translateX(0);
+}
+
+.dropdown-item:hover {
+  background-color: transparent;
+  transform: translateX(7px);
+}
+
+.dropdown-item.text-danger:hover {
+  background-color: rgba(255, 235, 235, 0.5);
+}
+
+.dropdown-item i {
+  width: 24px;
+  height: 24px;
+  text-align: center;
+  margin-right: 10px;
+  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  animation: iconPulse 2s infinite;
+}
+
+@keyframes iconPulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.text-primary {
+  color: #007bff !important;
+}
+
+.text-success {
+  color: #28a745 !important;
+}
+
+.text-danger {
+  color: #dc3545 !important;
+}
+
+/* Dropdown toggle */
+.dropdown-toggle::after {
+  display: none !important;
+}
+
+/* Logout button */
+.logout-button {
+  float: right;
+  display: none;
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.logout-button:hover {
+  background: #c82333;
+  transform: translateY(-2px);
+}
+
+/* Ensure all header parents allow overflow */
+.header-section,
+.container-fluid,
+.row,
+.col-12,
+.col-sm-4,
+.col-sm-8,
+.col-sm-12 {
+  overflow: visible !important;
+}
+
+/* Override bootstrap padding classes in header */
+.header-section .p-0,
+.header-section .p-2 {
+  padding: 0 !important;
+}
+
+.header-section .row.p-2 {
+  padding: 0 !important;
+}
+
+/* Link styling in header */
+.header-section a {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  text-decoration: none;
+}
+
+/* Responsive header */
+@media (max-width: 767px) {
+  .header-section {
+    padding-top: 10px !important;
+    max-height: auto !important;
+  }
+
+  .logo {
+    height: 60px;
+    width: auto;
+  }
+
+  .welcome-message {
+    font-size: 1.2rem !important;
+  }
+
+  .user-menu-btn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .user-avatar {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 768px) {
+  .d-md-block {
+    display: block !important;
+  }
+
+  .d-none.d-md-block {
+    display: block !important;
+  }
+
+  .justify-content-md-start {
+    justify-content: flex-start !important;
+  }
+}
+
+/* Print styles */
+@media print {
+  .header-section {
+    display: none;
+  }
+}
