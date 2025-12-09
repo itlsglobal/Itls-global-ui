@@ -23,7 +23,20 @@
   style="background: url('https://via.placeholder.com/1920x1080.png?text=Test+Background') no-repeat center center fixed; background-size: cover; position: relative;">
   <div class="page-wrapper">
     <div class="main-content">
-      <!-- Forgot-password modal removed (header simplified to logo-only) -->
+      <div id="forgot-password-modal" style="display:none;">
+        <div class="fp-modal-content">
+          <div class="fp-modal-header">
+            <i class="fas fa-key fp-modal-icon"></i>
+            <h3 class="fp-modal-title">Forgot Password</h3>
+          </div>
+          <p class="fp-modal-desc">Enter your registered email to reset your password.</p>
+          <input type="email" id="reset-email" class="fp-modal-input" placeholder="Enter your email" required />
+          <div class="fp-modal-actions">
+            <button class="fp-btn fp-btn-primary" onclick="sendResetLink()">Send Reset Link</button>
+            <button class="fp-btn fp-btn-secondary" onclick="closeModal()">Close</button>
+          </div>
+        </div>
+      </div>
 
       <!-- Overlay container -->
       <div id="overlay"
@@ -44,11 +57,85 @@
               </div>
             </div>
 
-            <!-- Right header column (login / signup / welcome) removed to keep header logo-only -->
+            <div class="col-12 col-sm-8 my-0">
+              <div id="login-form" class="modern-form">
+                <div class="input-container">
+                  <input type="text" id="username" class="form-control-custom" placeholder="Username" required />
+                  <input type="password" id="password" class="form-control-custom" placeholder="Password" required />
+                  <div class="dropdown glass-effect whoami-dropdown"
+                    style="position: relative; z-index: 3000; margin-top: 8px;">
+                    <button class="btn dropdown-toggle user-type-btn glass-effect" type="button" id="languageDropdown"
+                      data-bs-toggle="dropdown" data-bs-display="static" data-bs-boundary="viewport"
+                      aria-expanded="false">
+                      <i class="fas fa-user-circle me-1"></i> Who Am I?
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-animated tiny-dropdown whoami-menu"
+                      aria-labelledby="languageDropdown">
+                      <li>
+                        <a class="dropdown-item tiny-item" href="#" data-lang="en"><i
+                            class="fas fa-chalkboard-teacher tiny-icon"></i>Teacher</a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item tiny-item" href="#" data-lang="es"><i
+                            class="fas fa-user-friends tiny-icon"></i>Parent</a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item tiny-item" href="#" data-lang="fr"><i
+                            class="fas fa-user-graduate tiny-icon"></i>Student</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div style="text-align: right" class="forgot-link-container">
+                    <a href="#" class="forgot-password"
+                      style="margin-left: 20px;margin-right: -130px;margin-top: 0px;font-size: 0.8rem;"
+                      onclick="openModal()"><i class="fas fa-key me-1"></i>Forgot Password?</a>
+                  </div>
+                  <div class="button-container"
+                    style="margin-top: 0px; margin-right: -30px; display: flex; align-items: center; flex-direction: row; flex-wrap: nowrap; gap: 5px;">
+                    <button type="button" class="btn btn-primary" data-mdb-ripple-init id="login-btn"><i
+                        class="fas fa-sign-in-alt me-1"></i> Log In
+                    </button>
+                    <button type="button" class="btn btn-secondary" data-mdb-ripple-init onclick="showOverlay()">
+                      <i class="fas fa-user-plus me-1"></i> Sign Up
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+              <div class="welcome-container" id="welcome-container"
+                style="display: none; text-align: right; margin-top: -30px; position: fixed; top: 15px; right: 70px; z-index: 99998; display: flex; justify-content: flex-end; align-items: center; background: transparent;">
+                <h2 class="welcome-message typewriter-welcome" id="typewriter-welcome"></h2>
+              </div>
+            </div>
           </div>
         </div>
       </section>
-      <!-- User profile dropdown removed from header (header simplified to logo-only) -->
+      <div class="dropdown user-profile-dropdown" style="position: fixed; top: 15px; right: 28px; z-index: 200000;">
+        <button class="btn user-menu-btn pulse-animation" type="button" id="userDropdown" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          <span id="userInitial" class="user-avatar" data-initial-type="first-letter">A</span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end shadow-lg fade-in-dropdown" aria-labelledby="userDropdown">
+          <li>
+            <a class="dropdown-item slide-effect" href="profile.html">
+              <i class="fas fa-user me-2 text-primary icon-pulse"></i>
+              <span>Profile</span>
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item slide-effect" href="settings.html">
+              <i class="fas fa-tachometer-alt me-2 text-success icon-pulse"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item slide-effect" href="#" id="dropdown-logout-btn">
+              <i class="fas fa-sign-out-alt me-2 text-danger icon-pulse"></i>
+              <span>Sign Out</span>
+            </a>
+          </li>
+        </ul>
+      </div>
 
       <section class="menu-section" style="margin-top: -5px;">
         <div class="menu-bg"
@@ -554,8 +641,7 @@
       const loggedInUser = localStorage.getItem('loggedInUser');
       if (loggedInUser) {
         const user = JSON.parse(loggedInUser);
-        const loginFormEl = document.getElementById('login-form');
-        if (loginFormEl) loginFormEl.style.display = 'none';
+        document.getElementById('login-form').style.display = 'none';
         const welcomeContainer = document.getElementById('welcome-container');
         if (welcomeContainer) welcomeContainer.style.display = 'flex';
         // Set user initial to first valid letter (A-Z, a-z) from username or email, uppercase
@@ -567,8 +653,7 @@
           let match = source.match(/[A-Za-z]/);
           if (match) initial = match[0].toUpperCase();
         }
-        const userInitialEl = document.getElementById('userInitial');
-        if (userInitialEl) userInitialEl.textContent = initial;
+        document.getElementById('userInitial').textContent = initial;
         // Set the welcome message text
         const welcomeEl = document.getElementById('typewriter-welcome');
         if (welcomeEl) {
@@ -578,7 +663,7 @@
             welcomeEl.innerHTML = 'Welcome';
           }
         }
-        // Also update user profile dropdown initial and title attribute if present
+        // Also update user profile dropdown initial and title attribute
         const userDropdownBtn = document.getElementById('userDropdown');
         if (userDropdownBtn) {
           userDropdownBtn.title = `${user.username || user.email || ''} (${user.userType || ''})`;
@@ -586,23 +671,18 @@
       }
     });
 
-    // Overlay login button: focus login form, close overlay, and highlight login section (guarded)
-    const overlayLoginBtn = document.getElementById('overlay-login-btn');
-    if (overlayLoginBtn) {
-      overlayLoginBtn.onclick = function (e) {
-        e.preventDefault();
-        const gradeLoginOverlay = document.getElementById('grade-login-overlay');
-        if (gradeLoginOverlay) gradeLoginOverlay.style.display = 'none';
-        var loginForm = document.getElementById('login-form');
-        if (loginForm) {
-          loginForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          loginForm.classList.add('highlight-login');
-          const usernameEl = document.getElementById('username');
-          if (usernameEl) usernameEl.focus();
-          setTimeout(function () {
-            loginForm.classList.remove('highlight-login');
-          }, 1500);
-        }
+    // Overlay login button: focus login form, close overlay, and highlight login section
+    document.getElementById('overlay-login-btn').onclick = function (e) {
+      e.preventDefault();
+      document.getElementById('grade-login-overlay').style.display = 'none';
+      var loginForm = document.getElementById('login-form');
+      if (loginForm) {
+        loginForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        loginForm.classList.add('highlight-login');
+        document.getElementById('username').focus();
+        setTimeout(function () {
+          loginForm.classList.remove('highlight-login');
+        }, 1500);
       }
     }
 
