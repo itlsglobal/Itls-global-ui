@@ -146,7 +146,7 @@
           <div class="brand-section">
             <h2 class="footer-logo">ITLS</h2>
             <p class="footer-tagline mb-2">Interactive Teaching & Learning System</p>
-            <button class="join-btn" onclick="showOverlay()"><i class="fas fa-user-plus me-2"></i>Join now</button>
+            <!-- <button class="join-btn" onclick="window.location.href='/pages/registration/family-registration.html'"><i class="fas fa-user-plus me-2"></i>Join now</button> -->
           </div>
         </div>
         <div class="col-md-3 col-sm-6 footer-section">
@@ -185,55 +185,7 @@
     </div>
   </footer>
 
-  <!-- Overlay for login/register -->
-  <div id="overlay"
-    style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.55); z-index:9999; justify-content:center; align-items:center;">
-    <div
-      style="background:linear-gradient(135deg,#f8fafc 60%,#e3e9f7 100%); border-radius:22px; padding:48px 32px 36px 32px; max-width:400px; width:94%; text-align:center; box-shadow:0 12px 40px rgba(0,0,0,0.22); position:relative; animation: popIn .35s cubic-bezier(.4,2,.6,1);">
-      <button onclick="document.getElementById('overlay').style.display='none'"
-        style="position:absolute; top:18px; right:24px; background:none; border:none; font-size:32px; color:#888; cursor:pointer; transition:color .2s;">&times;</button>
-      <div style="margin-bottom:20px;">
-        <img src="images/lock.png" alt="Login Required"
-          style="width:70px; height:70px; margin-bottom:12px; filter:drop-shadow(0 2px 12px #e0e0e0); background:#fff; border-radius:50%; border:2px solid #e3e9f7; object-fit:contain;"
-          onerror="this.onerror=null;this.src='images/logo.png';">
-      </div>
-      <h3 style="margin-bottom:12px; font-size:1.6rem; font-weight:700; color:#053361; letter-spacing:0.5px;">Access
-        Restricted</h3>
-      <p style="margin-bottom:28px; color:#444; font-size:1.13rem; line-height:1.5;">To explore grade content and unlock
-        all features, please login or register for a membership account.</p>
-      <button class="btn btn-primary"
-        style="margin-bottom:14px; width:100%; font-size:1.13rem; font-weight:600; border-radius:10px; box-shadow:0 2px 8px #e0e0e0; letter-spacing:0.5px; padding:10px 0; transition:background .2s;"
-        onclick="window.location.href='/indexs.html';">
-        <i class="fas fa-sign-in-alt me-2"></i>Login
-      </button>
-      <button class="btn btn-outline-primary"
-        style="width:100%; font-size:1.13rem; font-weight:600; border-radius:10px; padding:10px 0; letter-spacing:0.5px;"
-        onclick="window.location.href='/indexs.html?openMembership=true'">
-        <i class="fas fa-user-plus me-2"></i>Register
-      </button>
-      <div style="margin-top:22px; color:#888; font-size:0.98rem;">
-        <i class="fas fa-info-circle me-1"></i>Membership required for registration.
-      </div>
-    </div>
-  </div>
-  <style>
-    @keyframes popIn {
-      0% {
-        transform: scale(0.85);
-        opacity: 0;
-      }
-
-      100% {
-        transform: scale(1);
-        opacity: 1;
-      }
-    }
-
-    .highlight-login {
-      box-shadow: 0 0 0 4px #1976d2, 0 2px 16px #1976d2a0;
-      transition: box-shadow 0.3s;
-    }
-  </style>
+  <!-- Overlay removed: access restriction modal deleted to allow unrestricted access -->
 
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
@@ -260,8 +212,8 @@
       if (signInBtn && !signInBtn.dataset.bound) {
         signInBtn.addEventListener('click', function (e) {
           e.preventDefault();
-          if (typeof showOverlay === 'function') showOverlay();
-          else if (window.showOverlay) window.showOverlay();
+          // Open registration page directly since overlay was removed
+          window.location.href = '/pages/registration/family-registration.html';
         });
         signInBtn.dataset.bound = 'true';
       }
@@ -361,46 +313,7 @@
         }
       }
 
-      // 2. Overlay show/hide helpers
-      function showOverlay() {
-        if (document.getElementById('overlay')) {
-          document.getElementById('overlay').style.display = 'flex';
-        }
-      }
-      function hideOverlay() {
-        if (document.getElementById('overlay')) {
-          document.getElementById('overlay').style.display = 'none';
-        }
-      }
-      if (document.getElementById('overlay')) {
-        document.getElementById('overlay').addEventListener('click', function (e) {
-          if (e.target === this) hideOverlay();
-        });
-      }
-      window.addEventListener('message', function (event) {
-        if (event.data === 'close-membership-overlay') hideOverlay();
-      });
-
-      // 3. Overlay login button: redirect to indexs.html for login
-      if (document.getElementById('overlay-login-btn')) {
-        document.getElementById('overlay-login-btn').onclick = function (e) {
-          e.preventDefault();
-          window.location.href = '/indexs.html';
-        };
-      }
-
-      // 4. Prevent access to subtopic if not logged in
-      function isLoggedIn() {
-        return !!localStorage.getItem('loggedInUser');
-      }
-      document.body.addEventListener('click', function (e) {
-        let subtopicBtn = e.target.closest('.subtopic-item');
-        if (subtopicBtn && !isLoggedIn()) {
-          e.preventDefault();
-          showOverlay();
-          return false;
-        }
-      });
+      // Overlay and access-prevention removed: unrestricted access
 
       // 5. Remove broken/undefined jsonData usage
       // (If you want to display grade info, load it via fetch or define jsonData first)

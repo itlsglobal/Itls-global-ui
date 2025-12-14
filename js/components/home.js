@@ -269,18 +269,10 @@ document.addEventListener("DOMContentLoaded", () => {
   document.body.addEventListener('click', function(e) {
     let subtopicBtn = e.target.closest('.subtopic-item');
     if (subtopicBtn) {
-      if (!localStorage.getItem('loggedInUser')) {
-        // Not logged in: show overlay (handled in index.html as well)
-        if (typeof showOverlay === 'function') showOverlay();
-        else if (document.getElementById('overlay')) document.getElementById('overlay').style.display = 'flex';
-        e.preventDefault();
-        return false;
-      } else {
-        // Logged in: redirect to test.html
-        window.location.href = '/test.html';
-        e.preventDefault();
-        return false;
-      }
+      // Navigate to the actual test page present in the repo
+      window.location.href = '/pages/tests/test-main.html';
+      e.preventDefault();
+      return false;
     }
   });
 
