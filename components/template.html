@@ -48,10 +48,10 @@
       <div class="container footer-container-wrapper">
         <div class="row footer-container py-3">
           <div class="col-md-3 col-sm-6 footer-section">
-            <div class="brand-section">
+              <div class="brand-section">
               <h2 class="footer-logo">ITLS</h2>
               <p class="footer-tagline mb-2">Interactive Teaching & Learning System</p>
-              <button class="join-btn" id="join-now-btn" onclick="showOverlay()"><i
+              <button class="join-btn" id="join-now-btn" onclick="window.location.href='/pages/registration/family-registration.html'"><i
                   class="fas fa-user-plus me-2"></i>Join now</button>
             </div>
           </div>
@@ -228,25 +228,7 @@
     }
     // ...existing code...
 
-    // Overlay functions
-    function showOverlay() {
-      const overlay = document.getElementById('overlay');
-      overlay.style.display = 'block';
-      overlay.style.pointerEvents = 'auto';
-    }
-
-    function hideOverlay() {
-      const overlay = document.getElementById('overlay');
-      overlay.style.display = 'none';
-      overlay.style.pointerEvents = 'none';
-    }
-
-    // Close overlay when clicking outside
-    document.getElementById('overlay').addEventListener('click', function (e) {
-      if (e.target === this) {
-        hideOverlay();
-      }
-    });
+    // Overlay removed: membership modal handled via dedicated registration page
 
     // Logout functionality
     document.getElementById('logout-btn')?.addEventListener('click', function () {
@@ -296,25 +278,7 @@
       }
     });
 
-    // Overlay login button: focus login form, close overlay, and highlight login section (guarded)
-    const overlayLoginBtn = document.getElementById('overlay-login-btn');
-    if (overlayLoginBtn) {
-      overlayLoginBtn.onclick = function (e) {
-        e.preventDefault();
-        const gradeLoginOverlay = document.getElementById('grade-login-overlay');
-        if (gradeLoginOverlay) gradeLoginOverlay.style.display = 'none';
-        var loginForm = document.getElementById('login-form');
-        if (loginForm) {
-          loginForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          loginForm.classList.add('highlight-login');
-          const usernameEl = document.getElementById('username');
-          if (usernameEl) usernameEl.focus();
-          setTimeout(function () {
-            loginForm.classList.remove('highlight-login');
-          }, 1500);
-        }
-      }
-    }
+    // Overlay login helper removed
 
     // Sidebar grade button click handler (guaranteed to run after DOM is loaded)
     document.querySelectorAll('.grade-btn[data-grade-id]').forEach(btn => {
@@ -359,7 +323,8 @@
       // Check if we need to open the membership overlay automatically
       const urlParams = new URLSearchParams(window.location.search);
       if (urlParams.get('openMembership') === 'true') {
-        showOverlay(); // Automatically open the membership overlay
+        // Redirect to registration page instead of showing overlay
+        window.location.href = '/pages/registration/family-registration.html';
       }
     });
   </script>

@@ -479,7 +479,7 @@
                     <button type="button" class="btn btn-primary" id="login-btn">
                       <i class="fas fa-sign-in-alt me-1"></i> Log in
                     </button>
-                    <button type="button" class="btn btn-secondary" onclick="showOverlay()">
+                    <button type="button" class="btn btn-secondary" onclick="window.location.href='/pages/registration/family-registration.html'">
                       <i class="fas fa-user-plus me-1"></i> Sign in
                     </button>
                   </div>
@@ -622,7 +622,7 @@
             <div class="brand-section">
               <h2 class="footer-logo">ITLS</h2>
               <p class="footer-tagline mb-2">Interactive Teaching & Learning System</p>
-              <button class="join-btn" id="join-now-btn" onclick="showOverlay()"><i class="fas fa-user-plus me-2"></i>Join now</button>
+              <button class="join-btn" id="join-now-btn" onclick="window.location.href='/pages/registration/family-registration.html'"><i class="fas fa-user-plus me-2"></i>Join now</button>
             </div>
           </div>
           <div class="col-md-3 col-sm-6 footer-section">
@@ -667,11 +667,9 @@
     // Automatically update copyright year
     document.getElementById('current-year').textContent = new Date().getFullYear();
     
-    // Overlay functions
+    // Overlay removed: redirecting to registration page instead
     function showOverlay() {
-      const overlay = document.getElementById('overlay');
-      overlay.style.display = 'block';
-      overlay.style.pointerEvents = 'auto';
+      window.location.href = '/pages/registration/family-registration.html';
     }
     
     // Function to open the forgot password modal
