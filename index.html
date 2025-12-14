@@ -7,7 +7,7 @@
   <title>ITLS</title>
   <link rel="stylesheet" href="/css/pages/styles.css" />
   <link rel="stylesheet" href="css/themes/creamy_gray_theme_minimal.css" />
-  <link rel="stylesheet" href="css/secondPage/secondPageStyles.css" />
+  <!-- <link rel="stylesheet" href="css/secondPage/secondPageStyles.css" /> -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
@@ -30,22 +30,34 @@
       <div id="overlay"
         style="display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 20000;">
         <iframe src="pages/registration/membership-options.html"
-          style="width: 100%; height: 100%; border: none;"></iframe>
+          style="width: 100%; height: 90%; margin-top: 15px; border: none;"></iframe>
       </div>
 
       <section id="top-header" class="header-section">
         <div class="container-fluid" style="padding-top: 0; padding-bottom: 0;">
-          <div class="row p-0">
+          <div class="row p-0 align-items-center">
+            <!-- LEFT: Logo -->
             <div class="col-12 col-sm-4">
               <div class="d-flex align-items-center justify-content-center justify-content-md-start">
                 <a href="/index.html">
                   <img class="logo" style="height: 80px; width: auto; margin-top: 1px; margin-left: 8px;"
-                    src="./assets/images/LOGOITLS.png" alt="ITLS Logo">
+                    src="./assets/images/LOGOITLS.png" alt="ITLS Logo" />
                 </a>
               </div>
             </div>
 
-            <!-- Right header column (login / signup / welcome) removed to keep header logo-only -->
+            <!-- RIGHT: Login / Register -->
+            <div class="col-12 col-sm-8">
+              <div class="d-flex justify-content-center justify-content-sm-end align-items-center gap-3 pe-4">
+                <button class="btn btn-outline-primary px-4 py-2 fw-semibold" onclick="openLoginOverlay()">
+                  Login
+                </button>
+
+                <button class="btn btn-primary px-4 py-2 fw-semibold" onclick="openMembershipOverlay()">
+                  Register
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -54,83 +66,83 @@
       <section class="menu-section" style="margin-top: -5px;">
         <div class="container-fluid" style="padding-left: 0; padding-right: 0;">
           <div class="menu-bg"
-            style="display: flex; justify-content: flex-start; gap: 8px; padding: 5px 0 5px 0; padding-left: 0; margin-left: 0; position: relative;">
+            style="display: flex; justify-content: flex-start; gap: 80px; padding: 5px 0 5px 0; padding-left: 0; margin-left: 100; position: relative;">
             <div class="menu-box" style="width: 160px; margin-left: 0;">
-            <div class="menu-wp" style="display: flex; justify-content: center; align-items: center; height: 100%;">
-              <div class="menu-item-yellow" onclick="window.location.href='pages/menu/menu.html'"
-                onmouseover="this.style.boxShadow='0 12px 30px rgba(0,0,0,0.5)'; this.style.transform='translateY(-8px)';"
-                onmouseout="this.style.boxShadow='0 8px 20px rgba(0,0,0,0.3)'; this.style.transform='translateY(0)';">
-                <div
-                  style="position: absolute; top: 0; left: 0; width: 100%; height: 10px; ; border-top-left-radius: 8px; border-top-right-radius: 8px;">
+              <div class="menu-wp" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                <div class="menu-item-yellow" onclick="window.location.href='pages/menu/menu.html'"
+                  onmouseover="this.style.boxShadow='0 12px 30px rgba(0,0,0,0.5)'; this.style.transform='translateY(-8px)';"
+                  onmouseout="this.style.boxShadow='0 8px 20px rgba(0,0,0,0.3)'; this.style.transform='translateY(0)';">
+                  <div
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 10px; ; border-top-left-radius: 8px; border-top-right-radius: 8px;">
+                  </div>
+                  <span style="font-size: 1.4rem;font-weight: bold;">📚 Skill</span>
                 </div>
-                <span style="font-size: 1.4rem;font-weight: bold;">📚 Skill</span>
               </div>
             </div>
-          </div>
-          <div class="menu-box" style="width: 160px; margin-left: 0;">
-            <div class="menu-wp" style="display: flex; justify-content: center; align-items: center; height: 100%;">
-              <div class="menu-item-yellow" onclick="window.location.href='pages/menu/menu.html'"
-                onmouseover="this.style.boxShadow='0 12px 30px rgba(0,0,0,0.5)'; this.style.transform='translateY(-8px)';"
-                onmouseout="this.style.boxShadow='0 8px 20px rgba(0,0,0,0.3)'; this.style.transform='translateY(0)';">
+            <div class="menu-box" style="width: 160px; margin-left: 0;">
+              <div class="menu-wp" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                <div class="menu-item-yellow" onclick="window.location.href='pages/menu/menu.html'"
+                  onmouseover="this.style.boxShadow='0 12px 30px rgba(0,0,0,0.5)'; this.style.transform='translateY(-8px)';"
+                  onmouseout="this.style.boxShadow='0 8px 20px rgba(0,0,0,0.3)'; this.style.transform='translateY(0)';">
 
-                <div
-                  style="position: absolute; top: 0; left: 0; width: 100%; height: 10px; border-top-left-radius: 8px; border-top-right-radius: 8px;">
+                  <div
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 10px; border-top-left-radius: 8px; border-top-right-radius: 8px;">
+                  </div>
+                  <span
+                    style="display: flex; align-items: center; gap: 6px; font-weight: bold; font-size: 1.2rem; margin-top: 8px; display: inline-flex;">
+                    <span>🏗️</span>
+                    <span>Skill Bulding</span>
+                  </span>
                 </div>
-                <span
-                  style="display: flex; align-items: center; gap: 6px; font-weight: bold; font-size: 1.2rem; margin-top: 8px; display: inline-flex;">
-                  <span>🏗️</span>
-                  <span>Skill Bulding</span>
-                </span>
               </div>
             </div>
-          </div>
-          <div class="menu-box" style="width: 160px; margin-left: 0;">
-            <div class="menu-wp" style="display: flex; justify-content: center; align-items: center; height: 100%;">
-              <div class="menu-item-yellow" onclick="window.location.href='pages/menu/menu.html'"
-                onmouseover="this.style.boxShadow='0 12px 30px rgba(0,0,0,0.5)'; this.style.transform='translateY(-8px)';"
-                onmouseout="this.style.boxShadow='0 8px 20px rgba(0,0,0,0.3)'; this.style.transform='translateY(0)';">
-                <div
-                  style="position: absolute; top: 0; left: 0; width: 100%; height: 10px; border-top-left-radius: 8px; border-top-right-radius: 8px;">
+            <div class="menu-box" style="width: 160px; margin-left: 0;">
+              <div class="menu-wp" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                <div class="menu-item-yellow" onclick="window.location.href='pages/menu/menu.html'"
+                  onmouseover="this.style.boxShadow='0 12px 30px rgba(0,0,0,0.5)'; this.style.transform='translateY(-8px)';"
+                  onmouseout="this.style.boxShadow='0 8px 20px rgba(0,0,0,0.3)'; this.style.transform='translateY(0)';">
+                  <div
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 10px; border-top-left-radius: 8px; border-top-right-radius: 8px;">
+                  </div>
+                  <span
+                    style="display: flex; align-items: center; gap: 6px; font-weight: bold; font-size: 1.2rem; margin-top: 8px; display: inline-flex;">
+                    <span>📝</span>
+                    <span>Skill Evaluation</span>
+                  </span>
                 </div>
-                <span
-                  style="display: flex; align-items: center; gap: 6px; font-weight: bold; font-size: 1.2rem; margin-top: 8px; display: inline-flex;">
-                  <span>📝</span>
-                  <span>Skill Evaluation</span>
-                </span>
               </div>
             </div>
-          </div>
-          <div class="menu-box" style="width: 160px; margin-left: 0;">
-            <div class="menu-wp" style="display: flex; justify-content: center; align-items: center; height: 100%;">
-              <div class="menu-item-yellow" onclick="window.location.href='pages/menu/menu.html'"
-                onmouseover="this.style.boxShadow='0 12px 30px rgba(0,0,0,0.5)'; this.style.transform='translateY(-8px)';"
-                onmouseout="this.style.boxShadow='0 8px 20px rgba(0,0,0,0.3)'; this.style.transform='translateY(0)';">
-                <div
-                  style="position: absolute; top: 0; left: 0; width: 100%; height: 10px;border-top-left-radius: 8px; border-top-right-radius: 8px;">
-                </div>
+            <div class="menu-box" style="width: 160px; margin-left: 0;">
+              <div class="menu-wp" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                <div class="menu-item-yellow" onclick="window.location.href='pages/menu/menu.html'"
+                  onmouseover="this.style.boxShadow='0 12px 30px rgba(0,0,0,0.5)'; this.style.transform='translateY(-8px)';"
+                  onmouseout="this.style.boxShadow='0 8px 20px rgba(0,0,0,0.3)'; this.style.transform='translateY(0)';">
+                  <div
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 10px;border-top-left-radius: 8px; border-top-right-radius: 8px;">
+                  </div>
 
-                <div
-                  style="position: absolute; top: 8px; left: 0; width: 100%; height: 10px; border-top-left-radius: 8px; border-top-right-radius: 8px;">
+                  <div
+                    style="position: absolute; top: 8px; left: 0; width: 100%; height: 10px; border-top-left-radius: 8px; border-top-right-radius: 8px;">
+                  </div>
+                  <span
+                    style="display: flex; align-items: center; gap: 6px; font-weight: bold; font-size: 1.2rem; margin-top: 8px; display: inline-flex;">
+                    <span>🔍</span>
+                    <span>Skill Analysis</span>
+                  </span>
                 </div>
-                <span
-                  style="display: flex; align-items: center; gap: 6px; font-weight: bold; font-size: 1.2rem; margin-top: 8px; display: inline-flex;">
-                  <span>🔍</span>
-                  <span>Skill Analysis</span>
-                </span>
               </div>
             </div>
-          </div>
-          <div class="menu-box" style="width: 160px; margin-left: 0;">
-            <div class="menu-wp" style="display: flex; justify-content: center; align-items: center; height: 100%;">
-              <div class="menu-item-yellow" onclick="window.location.href='pages/menu/menu.html'"
-                onmouseover="this.style.boxShadow='0 12px 30px rgba(0,0,0,0.5)'; this.style.transform='translateY(-8px)';"
-                onmouseout="this.style.boxShadow='0 8px 20px rgba(0,0,0,0.3)'; this.style.transform='translateY(0)';">
-                <div
-                  style="position: absolute; top: 0; left: 0; width: 100%; height: 10px; border-top-left-radius: 8px; border-top-right-radius: 8px;">
+            <div class="menu-box" style="width: 160px; margin-left: 0;">
+              <div class="menu-wp" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                <div class="menu-item-yellow" onclick="window.location.href='pages/menu/menu.html'"
+                  onmouseover="this.style.boxShadow='0 12px 30px rgba(0,0,0,0.5)'; this.style.transform='translateY(-8px)';"
+                  onmouseout="this.style.boxShadow='0 8px 20px rgba(0,0,0,0.3)'; this.style.transform='translateY(0)';">
+                  <div
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 10px; border-top-left-radius: 8px; border-top-right-radius: 8px;">
+                  </div>
+                  <span style="font-size: 1.3rem; font-weight: bold;">🛠️ Support</span>
                 </div>
-                <span style="font-size: 1.3rem; font-weight: bold;">🛠️ Support</span>
               </div>
-            </div>
             </div>
           </div>
         </div>
@@ -335,288 +347,332 @@
             });
           });
       </script>
-  <footer class="footer">
-    <div class="container footer-container-wrapper">
-      <div class="row footer-container py-3">
-        <div class="col-md-3 col-sm-6 footer-section">
-          <div class="brand-section">
-            <h2 class="footer-logo">ITLS</h2>
-            <p class="footer-tagline mb-2">Interactive Teaching & Learning System</p>
-            <!-- <button class="join-btn" onclick="window.location.href='/pages/registration/family-registration.html'"><i class="fas fa-user-plus me-2"></i>Join now</button> -->
+      <footer class="footer">
+        <div class="container footer-container-wrapper">
+          <div class="row footer-container py-3">
+            <div class="col-md-3 col-sm-6 footer-section">
+              <div class="brand-section">
+                <h2 class="footer-logo">ITLS</h2>
+                <p class="footer-tagline mb-2">Interactive Teaching & Learning System</p>
+                <!-- <button class="join-btn" onclick="window.location.href='/pages/registration/family-registration.html'"><i class="fas fa-user-plus me-2"></i>Join now</button> -->
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6 footer-section">
+              <h3 class="footer-heading"><i class="fas fa-book-open me-2"></i>What we offer</h3>
+              <ul class="footer-links">
+                <li><i class="fas fa-calculator me-2"></i>Mathematics</li>
+                <li><i class="fas fa-language me-2"></i>English</li>
+                <li><i class="fas fa-flask me-2"></i>Science</li>
+                <li><i class="fas fa-globe-americas me-2"></i>Social Studies</li>
+              </ul>
+            </div>
+            <div class="col-md-3 col-sm-6 footer-section">
+              <h3 class="footer-heading"><i class="fas fa-info-circle me-2"></i>About</h3>
+              <ul class="footer-links" style="margin-top: 0.5rem">
+                <li><a href="contact-us.html"><i class="fas fa-envelope me-2"></i>Contact Us</a></li>
+                <li><a href="terms-of-service.html"><i class="fas fa-gavel me-2"></i>Terms of Service</a></li>
+                <li><a href="privacy-policy.html"><i class="fas fa-shield-alt me-2"></i>Privacy Policy</a></li>
+              </ul>
+            </div>
+            <div class="col-md-3 col-sm-6 footer-section">
+              <h3 class="footer-heading"><i class="fas fa-users me-2"></i>Connect Us</h3>
+              <div class="social-icons">
+                <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 text-center footer-bottom">
+              <p class="mb-0">&copy; 2023 ITLS. All rights reserved.</p>
+            </div>
           </div>
         </div>
-        <div class="col-md-3 col-sm-6 footer-section">
-          <h3 class="footer-heading"><i class="fas fa-book-open me-2"></i>What we offer</h3>
-          <ul class="footer-links">
-            <li><i class="fas fa-calculator me-2"></i>Mathematics</li>
-            <li><i class="fas fa-language me-2"></i>English</li>
-            <li><i class="fas fa-flask me-2"></i>Science</li>
-            <li><i class="fas fa-globe-americas me-2"></i>Social Studies</li>
-          </ul>
-        </div>
-        <div class="col-md-3 col-sm-6 footer-section">
-          <h3 class="footer-heading"><i class="fas fa-info-circle me-2"></i>About</h3>
-          <ul class="footer-links" style="margin-top: 0.5rem">
-            <li><a href="contact-us.html"><i class="fas fa-envelope me-2"></i>Contact Us</a></li>
-            <li><a href="terms-of-service.html"><i class="fas fa-gavel me-2"></i>Terms of Service</a></li>
-            <li><a href="privacy-policy.html"><i class="fas fa-shield-alt me-2"></i>Privacy Policy</a></li>
-          </ul>
-        </div>
-        <div class="col-md-3 col-sm-6 footer-section">
-          <h3 class="footer-heading"><i class="fas fa-users me-2"></i>Connect Us</h3>
-          <div class="social-icons">
-            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12 text-center footer-bottom">
-          <p class="mb-0">&copy; 2023 ITLS. All rights reserved.</p>
-        </div>
-      </div>
+      </footer>
     </div>
-  </footer>
-  </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
-  <!-- MDB JavaScript for ripple effect -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.js"></script>
-  <script src="/js/landingPage/script.js"></script>
-  <script>
-    // Initialize MDB Ripple effect
-    document.addEventListener('DOMContentLoaded', function () {
-      // Initialize ripple effect on buttons with data-mdb-ripple-init attribute
-      const rippleElements = document.querySelectorAll('[data-mdb-ripple-init]');
-      rippleElements.forEach(function (element) {
-        new mdb.Ripple(element);
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <!-- MDB JavaScript for ripple effect -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.js"></script>
+    <script src="/js/landingPage/script.js"></script>
+    <script>
+      // Initialize MDB Ripple effect
+      document.addEventListener('DOMContentLoaded', function () {
+        // Initialize ripple effect on buttons with data-mdb-ripple-init attribute
+        const rippleElements = document.querySelectorAll('[data-mdb-ripple-init]');
+        rippleElements.forEach(function (element) {
+          new mdb.Ripple(element);
+        });
       });
-    });
-  </script>
-  <script>
+    </script>
+    <script>
 
-    // Dropdown user type selection logic
-    document.querySelectorAll('.dropdown-menu.tiny-dropdown a').forEach(item => {
-      item.addEventListener('click', function (e) {
-        e.preventDefault();
-        const selectedText = this.textContent.trim();
-        const userTypeBtn = document.querySelector('.user-type-btn');
-        if (userTypeBtn) {
-          userTypeBtn.textContent = selectedText;
-        }
+      // Dropdown user type selection logic
+      document.querySelectorAll('.dropdown-menu.tiny-dropdown a').forEach(item => {
+        item.addEventListener('click', function (e) {
+          e.preventDefault();
+          const selectedText = this.textContent.trim();
+          const userTypeBtn = document.querySelector('.user-type-btn');
+          if (userTypeBtn) {
+            userTypeBtn.textContent = selectedText;
+          }
+        });
       });
-    });
 
-    // Reposition the whoami-menu dropdown on Bootstrap dropdown show event
-    const userTypeBtn = document.getElementById('languageDropdown');
-    const whoamiMenu = document.querySelector('.whoami-menu');
-    const whoamiDropdown = document.querySelector('.whoami-dropdown');
-    let originalParent = whoamiMenu.parentNode;
-    let originalNextSibling = whoamiMenu.nextSibling;
-
-    if (userTypeBtn && whoamiMenu && whoamiDropdown) {
+      // Reposition the whoami-menu dropdown on Bootstrap dropdown show event
+      const userTypeBtn = document.getElementById('languageDropdown');
+      const whoamiMenu = document.querySelector('.whoami-menu');
+      const whoamiDropdown = document.querySelector('.whoami-dropdown');
       let originalParent = whoamiMenu.parentNode;
       let originalNextSibling = whoamiMenu.nextSibling;
 
-      userTypeBtn.addEventListener('show.bs.dropdown', () => {
-        // Move dropdown menu to body to avoid clipping and stacking context issues
-        document.body.appendChild(whoamiMenu);
-      });
+      if (userTypeBtn && whoamiMenu && whoamiDropdown) {
+        let originalParent = whoamiMenu.parentNode;
+        let originalNextSibling = whoamiMenu.nextSibling;
 
-      userTypeBtn.addEventListener('shown.bs.dropdown', () => {
-        const rect = userTypeBtn.getBoundingClientRect();
-        whoamiMenu.style.position = 'fixed';
-        whoamiMenu.style.top = (rect.bottom) + 'px';
-        whoamiMenu.style.left = rect.left + 'px';
-        whoamiMenu.style.zIndex = '110000';
-      });
+        userTypeBtn.addEventListener('show.bs.dropdown', () => {
+          // Move dropdown menu to body to avoid clipping and stacking context issues
+          document.body.appendChild(whoamiMenu);
+        });
 
-      userTypeBtn.addEventListener('hide.bs.dropdown', () => {
-        // Move dropdown menu back to original container
-        if (originalNextSibling) {
-          originalParent.insertBefore(whoamiMenu, originalNextSibling);
-        } else {
-          originalParent.appendChild(whoamiMenu);
-        }
-        whoamiMenu.style.position = '';
-        whoamiMenu.style.top = '';
-        whoamiMenu.style.left = '';
-        whoamiMenu.style.zIndex = '';
-      });
-    }
+        userTypeBtn.addEventListener('shown.bs.dropdown', () => {
+          const rect = userTypeBtn.getBoundingClientRect();
+          whoamiMenu.style.position = 'fixed';
+          whoamiMenu.style.top = (rect.bottom) + 'px';
+          whoamiMenu.style.left = rect.left + 'px';
+          whoamiMenu.style.zIndex = '110000';
+        });
 
-
-
-    // Initialize carousel with auto-sliding
-    document.addEventListener('DOMContentLoaded', function () {
-      var myCarousel = document.getElementById('carouselExampleDark');
-      var carousel = new bootstrap.Carousel(myCarousel, {
-        interval: 3000,
-        wrap: true,
-        ride: 'carousel'
-      });
-    });
-
-
-    // Forgot password modal functions
-    function openModal() {
-      document.getElementById('forgot-password-modal').style.display = 'block';
-    }
-
-    function closeModal() {
-      document.getElementById('forgot-password-modal').style.display = 'none';
-    }
-
-    // function sendResetLink() {
-    //   const email = document.getElementById('reset-email').value;
-    //   if (email) {
-    //     alert('Password reset link has been sent to ' + email);
-    //     closeModal();
-    //   } else {
-    //     alert('Please enter your email address');
-    //   }
-    // }
-
-    // ...existing code...
-    function sendResetLink() {
-      const email = document.getElementById('reset-email').value;
-      if (email) {
-        // Prepare the payload
-        const formData = { email: email };
-
-        // Use the actual backend endpoint
-        const apiUrl = 'http://localhost:8082/itls/forgot-password';
-
-        // Send POST request
-        fetch(apiUrl, {
-          method: 'POST',
-          headers: {
-            'accept': '*/*',
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(formData)
-        })
-          .then(response => {
-            if (response.ok) {
-              alert('Password reset link has been sent to ' + email);
-              closeModal();
-            } else {
-              alert('Failed to send reset link. Please try again.');
-            }
-          })
-          .catch(error => {
-            alert('Error sending request: ' + error);
-          });
-      } else {
-        alert('Please enter your email address');
-      }
-    }
-    // ...existing code...
-
-    // Overlay removed: membership modal handled via dedicated registration page
-
-    // Logout functionality
-    document.getElementById('logout-btn')?.addEventListener('click', function () {
-      localStorage.removeItem('loggedInUser');
-      window.location.reload();
-    });
-
-    document.getElementById('logout-dropdown-btn')?.addEventListener('click', function () {
-      localStorage.removeItem('loggedInUser');
-      window.location.reload();
-    });
-
-    // Check if user is logged in on page load
-    window.addEventListener('load', function () {
-      const loggedInUser = localStorage.getItem('loggedInUser');
-      if (loggedInUser) {
-        const user = JSON.parse(loggedInUser);
-        const loginFormEl = document.getElementById('login-form');
-        if (loginFormEl) loginFormEl.style.display = 'none';
-        const welcomeContainer = document.getElementById('welcome-container');
-        if (welcomeContainer) welcomeContainer.style.display = 'flex';
-        // Set user initial to first valid letter (A-Z, a-z) from username or email, uppercase
-        let initial = '';
-        let source = (user.username && typeof user.username === 'string' && user.username.trim().length > 0)
-          ? user.username.trim()
-          : (user.email && typeof user.email === 'string' && user.email.trim().length > 0 ? user.email.trim() : '');
-        if (source) {
-          let match = source.match(/[A-Za-z]/);
-          if (match) initial = match[0].toUpperCase();
-        }
-        const userInitialEl = document.getElementById('userInitial');
-        if (userInitialEl) userInitialEl.textContent = initial;
-        // Set the welcome message text
-        const welcomeEl = document.getElementById('typewriter-welcome');
-        if (welcomeEl) {
-          if (user.username) {
-            welcomeEl.innerHTML = `Welcome<br>${user.username}`;
+        userTypeBtn.addEventListener('hide.bs.dropdown', () => {
+          // Move dropdown menu back to original container
+          if (originalNextSibling) {
+            originalParent.insertBefore(whoamiMenu, originalNextSibling);
           } else {
-            welcomeEl.innerHTML = 'Welcome';
+            originalParent.appendChild(whoamiMenu);
+          }
+          whoamiMenu.style.position = '';
+          whoamiMenu.style.top = '';
+          whoamiMenu.style.left = '';
+          whoamiMenu.style.zIndex = '';
+        });
+      }
+
+
+
+      // Initialize carousel with auto-sliding
+      document.addEventListener('DOMContentLoaded', function () {
+        var myCarousel = document.getElementById('carouselExampleDark');
+        var carousel = new bootstrap.Carousel(myCarousel, {
+          interval: 3000,
+          wrap: true,
+          ride: 'carousel'
+        });
+      });
+
+
+      // Forgot password modal functions
+      function openModal() {
+        document.getElementById('forgot-password-modal').style.display = 'block';
+      }
+
+      function closeModal() {
+        document.getElementById('forgot-password-modal').style.display = 'none';
+      }
+
+      // function sendResetLink() {
+      //   const email = document.getElementById('reset-email').value;
+      //   if (email) {
+      //     alert('Password reset link has been sent to ' + email);
+      //     closeModal();
+      //   } else {
+      //     alert('Please enter your email address');
+      //   }
+      // }
+
+      // ...existing code...
+      function sendResetLink() {
+        const email = document.getElementById('reset-email').value;
+        if (email) {
+          // Prepare the payload
+          const formData = { email: email };
+
+          // Use the actual backend endpoint
+          const apiUrl = 'http://localhost:8082/itls/forgot-password';
+
+          // Send POST request
+          fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+              'accept': '*/*',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+          })
+            .then(response => {
+              if (response.ok) {
+                alert('Password reset link has been sent to ' + email);
+                closeModal();
+              } else {
+                alert('Failed to send reset link. Please try again.');
+              }
+            })
+            .catch(error => {
+              alert('Error sending request: ' + error);
+            });
+        } else {
+          alert('Please enter your email address');
+        }
+      }
+      // ...existing code...
+
+      // Overlay removed: membership modal handled via dedicated registration page
+
+      // Logout functionality
+      document.getElementById('logout-btn')?.addEventListener('click', function () {
+        localStorage.removeItem('loggedInUser');
+        window.location.reload();
+      });
+
+      document.getElementById('logout-dropdown-btn')?.addEventListener('click', function () {
+        localStorage.removeItem('loggedInUser');
+        window.location.reload();
+      });
+
+      // Check if user is logged in on page load
+      window.addEventListener('load', function () {
+        const loggedInUser = localStorage.getItem('loggedInUser');
+        if (loggedInUser) {
+          const user = JSON.parse(loggedInUser);
+          const loginFormEl = document.getElementById('login-form');
+          if (loginFormEl) loginFormEl.style.display = 'none';
+          const welcomeContainer = document.getElementById('welcome-container');
+          if (welcomeContainer) welcomeContainer.style.display = 'flex';
+          // Set user initial to first valid letter (A-Z, a-z) from username or email, uppercase
+          let initial = '';
+          let source = (user.username && typeof user.username === 'string' && user.username.trim().length > 0)
+            ? user.username.trim()
+            : (user.email && typeof user.email === 'string' && user.email.trim().length > 0 ? user.email.trim() : '');
+          if (source) {
+            let match = source.match(/[A-Za-z]/);
+            if (match) initial = match[0].toUpperCase();
+          }
+          const userInitialEl = document.getElementById('userInitial');
+          if (userInitialEl) userInitialEl.textContent = initial;
+          // Set the welcome message text
+          const welcomeEl = document.getElementById('typewriter-welcome');
+          if (welcomeEl) {
+            if (user.username) {
+              welcomeEl.innerHTML = `Welcome<br>${user.username}`;
+            } else {
+              welcomeEl.innerHTML = 'Welcome';
+            }
+          }
+          // Also update user profile dropdown initial and title attribute if present
+          const userDropdownBtn = document.getElementById('userDropdown');
+          if (userDropdownBtn) {
+            userDropdownBtn.title = `${user.username || user.email || ''} (${user.userType || ''})`;
           }
         }
-        // Also update user profile dropdown initial and title attribute if present
-        const userDropdownBtn = document.getElementById('userDropdown');
-        if (userDropdownBtn) {
-          userDropdownBtn.title = `${user.username || user.email || ''} (${user.userType || ''})`;
+      });
+
+      // Overlay login helper removed
+
+      // Sidebar grade button click handler (guaranteed to run after DOM is loaded)
+      document.querySelectorAll('.grade-btn[data-grade-id]').forEach(btn => {
+        btn.onclick = function () {
+          const gradeId = this.getAttribute('data-grade-id');
+          if (gradeId !== null) {
+            window.location.href = 'pages/home/secondPage.html?grade=' + gradeId;
+          }
+        };
+      });
+    </script>
+    <script>
+      console.log('Sidebar grade handler script loaded');
+      // Remove debug pointer-events CSS if present
+      const debugStyle = document.querySelector('style#debug-pointer-events');
+      if (debugStyle) debugStyle.remove();
+
+      // Remove all previous click handlers (if any)
+      document.querySelectorAll('.grade-btn[data-grade-id]').forEach(btn => {
+        btn.replaceWith(btn.cloneNode(true));
+      });
+
+      // Attach handler to render src/Home/index.html for the selected grade
+      console.log('Attaching sidebar grade button handler...');
+      document.querySelectorAll('.grade-btn[data-grade-id]').forEach(btn => {
+        btn.onclick = function () {
+          const gradeId = this.getAttribute('data-grade-id');
+          if (gradeId !== null) {
+            window.location.href = 'pages/home/secondPage.html?grade=' + gradeId;
+          }
+        };
+      });
+    </script>
+    <script>
+      // Hide 'Join now' button if user is logged in
+      window.addEventListener('load', function () {
+        if (localStorage.getItem('loggedInUser')) {
+          var joinBtn = document.getElementById('join-now-btn');
+          if (joinBtn) joinBtn.style.display = 'none';
         }
+
+        // Check if we need to open the membership overlay automatically
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('openMembership') === 'true') {
+          // Redirect to registration page instead of showing overlay
+          window.location.href = '/pages/registration/family-registration.html';
+        }
+      });
+    </script>
+    <script>
+      function openMembershipOverlay() {
+        const overlay = document.getElementById("overlay");
+        const iframe = overlay.querySelector("iframe");
+
+        iframe.src = "/pages/registration/membership-options.html";
+        overlay.style.display = "block";
+      }
+
+      // Listen for close message from iframe
+      window.addEventListener("message", function (event) {
+        if (event.data === "close-membership-overlay") {
+          const overlay = document.getElementById("overlay");
+          const iframe = overlay.querySelector("iframe");
+
+          overlay.style.display = "none";
+          iframe.src = ""; // cleanup
+        }
+      });
+    </script>
+    <script>
+      function openLoginOverlay() {
+        const overlay = document.getElementById("overlay");
+        const iframe = overlay.querySelector("iframe");
+
+        iframe.src = "/pages/auth/login.html";
+        overlay.style.display = "block";
+      }
+      window.addEventListener("message", (event) => {
+      // optional safety check
+      // if (event.origin !== window.location.origin) return;
+
+      if (event.data === "close-overlay") {
+        const overlay = document.getElementById("overlay");
+
+        if (!overlay) return;
+
+        const iframe = overlay.querySelector("iframe");
+        if (iframe) iframe.src = "";
+
+        overlay.style.display = "none";
       }
     });
-
-    // Overlay login helper removed
-
-    // Sidebar grade button click handler (guaranteed to run after DOM is loaded)
-    document.querySelectorAll('.grade-btn[data-grade-id]').forEach(btn => {
-      btn.onclick = function () {
-        const gradeId = this.getAttribute('data-grade-id');
-        if (gradeId !== null) {
-          window.location.href = 'pages/home/secondPage.html?grade=' + gradeId;
-        }
-      };
-    });
-  </script>
-  <script>
-    console.log('Sidebar grade handler script loaded');
-    // Remove debug pointer-events CSS if present
-    const debugStyle = document.querySelector('style#debug-pointer-events');
-    if (debugStyle) debugStyle.remove();
-
-    // Remove all previous click handlers (if any)
-    document.querySelectorAll('.grade-btn[data-grade-id]').forEach(btn => {
-      btn.replaceWith(btn.cloneNode(true));
-    });
-
-    // Attach handler to render src/Home/index.html for the selected grade
-    console.log('Attaching sidebar grade button handler...');
-    document.querySelectorAll('.grade-btn[data-grade-id]').forEach(btn => {
-      btn.onclick = function () {
-        const gradeId = this.getAttribute('data-grade-id');
-        if (gradeId !== null) {
-          window.location.href = 'pages/home/secondPage.html?grade=' + gradeId;
-        }
-      };
-    });
-  </script>
-  <script>
-    // Hide 'Join now' button if user is logged in
-    window.addEventListener('load', function () {
-      if (localStorage.getItem('loggedInUser')) {
-        var joinBtn = document.getElementById('join-now-btn');
-        if (joinBtn) joinBtn.style.display = 'none';
-      }
-
-      // Check if we need to open the membership overlay automatically
-      const urlParams = new URLSearchParams(window.location.search);
-      if (urlParams.get('openMembership') === 'true') {
-        // Redirect to registration page instead of showing overlay
-        window.location.href = '/pages/registration/family-registration.html';
-      }
-    });
-  </script>
+    </script>
 </body>
 
 </html>

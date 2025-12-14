@@ -502,9 +502,9 @@ button[type="submit"] i {
 
 /* Add divider lines between menu sections */
 .menu-bg>.menu-box:not(:last-child) {
-    border-right: 2px solid #ccc;
-    padding-right: 15px;
-    margin-right: 15px;
+    border-right: 0px solid #ccc;
+    padding-right: 0px;
+    margin-right: 40px;
 }
 
 .menu-box {
@@ -3375,3 +3375,5 @@ a,
     animation: none !important;
     transition: none !important;
 }
+
+

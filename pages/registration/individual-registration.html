@@ -408,7 +408,7 @@
                 console.log("Sending registration data:", formData);
 
                 // Use the actual backend endpoint
-                const apiUrl = 'http://localhost:8082/itls/register';
+                const apiUrl = 'http://72.60.220.244:8082/itls/register';
 
                 const response = await fetch(apiUrl, {
                     method: 'POST',
@@ -453,13 +453,13 @@
                     email: document.getElementById('email').value.trim(),
                     phoneNumber: document.getElementById('phoneNumber').value.trim(),
                     password: document.getElementById('password').value,
-                    userType: 'Student', // Fix: must match login dropdown
+                    role: 'STUDENT', // Fix: must match login dropdown
                     studentName: document.getElementById('studentName').value.trim(),
                     grade: document.getElementById('grade').value.trim(),
                     country: document.getElementById('countrySelect').value
                 };
                 // Try backend first
-                fetch('http://localhost:8082/itls/register', {
+                fetch('http://72.60.220.244:8082/itls/register', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(userData)

@@ -500,7 +500,7 @@
                     userData.members.push({ name, gr });
                 }
                 // Try backend first
-                fetch('http://localhost:8082/itls/register', {
+                fetch('http://72.60.220.244:8082/itls/register', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(userData)
@@ -586,7 +586,7 @@
                 };
 
                 // Use the actual backend endpoint
-                const apiUrl = 'http://localhost:8082/itls/register';
+                const apiUrl = 'http://72.60.220.244:8082/itls/register';
 
                 const response = await fetch(apiUrl, {
                     method: 'POST',
